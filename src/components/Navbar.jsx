@@ -22,7 +22,7 @@ const Nav = styled.div`
   }
 `;
 
-const Logo = styled.div`
+const Logo = styled(Link)`
   width: 6rem;
   img {
     width: 100%;
@@ -31,7 +31,7 @@ const Logo = styled.div`
   }
 `;
 
-const MenuBtn = styled.div`
+const MenuBtn = styled(Link)`
   display: flex;
   align-items: center;
   margin-right: 1rem;
@@ -52,10 +52,11 @@ const Navbar = () => {
   return (
     <Container>
       <Nav>
-        <Logo>
+        <Logo to="/">
           <img src={LogoImg} alt="Logo" />
         </Logo>
         <MenuBtn
+          to="/aboutus"
           onMouseEnter={() =>
             setCursorSettings((prevSettings) => ({
               ...prevSettings,

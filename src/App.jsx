@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import LocomotiveScroll from "locomotive-scroll";
 import { ScrollTrigger } from "gsap/all";
 import { useGSAP } from "@gsap/react";
@@ -13,10 +13,13 @@ import "./App.scss";
 import Navbar from "./components/Navbar";
 import Cursor from "./components/CustomCursor";
 import gsap from "gsap";
+import { AnimatePresence } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 function App() {
+  const location = useLocation();
+
   useEffect(() => {
     const locomotiveScroll = new LocomotiveScroll();
   }, []);
@@ -25,10 +28,12 @@ function App() {
     <>
       <Cursor />
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/aboutus" element={<About />} />
-      </Routes>
+      <AnimatePresence initial={false} mode={"wait"}>
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<Home />} />
+          <Route path="/aboutus" element={<About />} />
+        </Routes>
+      </AnimatePresence>
     </>
   );
 }

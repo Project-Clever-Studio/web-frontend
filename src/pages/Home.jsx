@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import styled from "styled-components";
 import { FaArrowRight } from "react-icons/fa";
 import SplitType from "split-type";
+import RouteTransition from "../components/RouteTransition";
 
 const Container = styled.div``;
 
@@ -20,7 +21,7 @@ const Hero = styled.div`
 
 const ContentWrapper = styled.div`
   padding: 0 3rem;
-  padding-top: 5rem;
+  padding-top: 6rem;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -34,10 +35,10 @@ const ContentWrapper = styled.div`
 `;
 
 const HeaderText = styled.h1`
-  font-family: "Neue Montreal";
-  font-weight: 600;
+  font-family: "Mona Sans";
+  font-weight: 700;
   text-transform: uppercase;
-  font-size: 12vw;
+  font-size: 11.5vw;
   letter-spacing: -1px;
   width: 100%;
   white-space: nowrap;
@@ -49,18 +50,19 @@ const HeaderText = styled.h1`
 const Content = styled.div`
   display: flex;
   .info {
-    font-family: "Manrope", sans-serif;
-    width: 40%;
+    width: 35%;
     padding-bottom: 2rem;
+    font-family: "Mona Sans";
     h2 {
       font-size: 3rem;
       font-size: clamp(1.5rem, 3vw, 3rem);
       line-height: 1;
       padding-bottom: 1.8rem;
+      font-weight: 500;
     }
     p {
       padding-bottom: 1.8rem;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
     }
     span {
       display: flex;
@@ -156,7 +158,7 @@ const Home = () => {
   });
 
   return (
-    <>
+    <RouteTransition>
       <Container>
         <Hero>
           <ContentWrapper>
@@ -171,9 +173,7 @@ const Home = () => {
                   Our team of talented designers, developers, and branding
                   experts work tirelessly to bring your vision to life. Whether
                   you're looking to create a stunning website that captures your
-                  brand essence, develop a user-friendly app to engage your
-                  audience, or enhance your brand identity with captivating
-                  visuals, Clever Studio has you covered.
+                  brand essence.
                 </p>
                 <span>
                   Reach us <FaArrowRight />
@@ -237,7 +237,7 @@ const Home = () => {
           <h1>afasfasfasf</h1>
         </AboutSection>
       </Container>
-    </>
+    </RouteTransition>
   );
 };
 

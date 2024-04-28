@@ -1,7 +1,12 @@
 import React from "react";
+import RouteTransition from "../components/RouteTransition";
 
 const About = () => {
-  return <div>About</div>;
+  return (
+    <RouteTransition>
+      <div>About</div>
+    </RouteTransition>
+  );
 };
 
 export default About;

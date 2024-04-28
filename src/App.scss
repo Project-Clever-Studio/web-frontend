@@ -1,12 +1,27 @@
 @import url(../public/Fonts/NeueMontreal/neuemontreal.scss);
+@import url(../public/Fonts/MonsSans/monasans.css);
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 body {
+}
+
+a {
+  text-decoration: none;
+  color: #000;
 }
 
 .bounds {
