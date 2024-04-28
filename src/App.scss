@@ -1,9 +1,23 @@
-@import url(./assets/css/helper.css);
-@import url(./assets/css/light-style.css);
-@import url(./assets/css/theme.css);
-
+@import url(../public/Fonts/NeueMontreal/neuemontreal.scss);
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+}
+
+.bounds {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: all;
+  cursor: pointer;
+  &:hover {
+    transform: scale(5);
+  }
 }

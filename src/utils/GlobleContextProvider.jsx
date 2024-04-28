@@ -7,7 +7,7 @@ export const ContextProvider = ({ children }) => {
   const [cursorSettings, setCursorSettings] = useState({
     size: 1,
     isSticky: false,
-    color: "#fff",
+    color: "transparent",
     isBlending: true,
     text: "",
   });
