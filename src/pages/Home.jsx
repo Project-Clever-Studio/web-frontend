@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { FaArrowRight } from "react-icons/fa";
 import SplitType from "split-type";
 import RouteTransition from "../components/RouteTransition";
+import Brands from "../components/Sections/Brands";
 
 const Container = styled.div``;
 
@@ -125,15 +126,29 @@ const ShowReel = styled.div`
   }
 `;
 
-const AboutSection = styled.div``;
+const AboutSection = styled.div`
+  padding: 0 3rem;
+  padding-top: 5rem;
+`;
+
+const Title = styled.div`
+  text-transform: uppercase;
+  font-family: "Mona Sans";
+  font-size: 7rem;
+  font-weight: 600;
+`;
 
 const Home = () => {
   const showReelRef = useRef(null);
   const headerTextRef = useRef(null);
+  const heroRef = useRef(null);
+  const infoRef = useRef(null);
 
   useGSAP(() => {
     const headerTextSplit = SplitType.create(headerTextRef.current);
+    const infoSplit = SplitType.create(infoRef.current);
 
+    // Show Reel Animation
     gsap.to(showReelRef.current, {
       scale: 1,
       ease: "none",
@@ -141,18 +156,40 @@ const Home = () => {
         trigger: showReelRef.current,
         start: "top 50%",
         end: "bottom 10%",
-        scrub: 0.5,
+        scrub: 0.1,
+      },
+    });
+
+    // Header Animation
+    gsap.to(heroRef.current, {
+      backgroundColor: "#7d7d7d",
+      scrollTrigger: {
+        trigger: heroRef.current,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 0.3,
       },
     });
 
     gsap.set(headerTextSplit.chars, {
       yPercent: 100,
     });
+    gsap.set(infoSplit.words, {
+      opacity: 0,
+    });
 
     gsap.to(headerTextSplit.chars, {
       yPercent: 0,
       duration: 0.75,
-      stagger: 0.03,
+      stagger: 0.02,
+      ease: "power4.Out",
+    });
+
+    gsap.to(infoSplit.words, {
+      opacity: 1,
+      delay: 0.3,
+      duration: 1,
+      stagger: 0.01,
       ease: "power4.Out",
     });
   });
@@ -160,11 +197,11 @@ const Home = () => {
   return (
     <RouteTransition>
       <Container>
-        <Hero>
+        <Hero ref={heroRef}>
           <ContentWrapper>
             <HeaderText ref={headerTextRef}>Clever Studio</HeaderText>
             <Content>
-              <div className="info">
+              <div className="info" ref={infoRef}>
                 <h2>
                   Clever Studio, your one-stop destination for cutting-edge
                   creative media solutions.
@@ -193,49 +230,8 @@ const Home = () => {
             </div>
           </ShowReel>
         </Hero>
-        <AboutSection>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-          <h1>afasfasfasf</h1>
-        </AboutSection>
+        <AboutSection>{/* <Title>About Us</Title> */}</AboutSection>
+        <Brands />
       </Container>
     </RouteTransition>
   );
