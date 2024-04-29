@@ -9,7 +9,7 @@ const CustomCursor = styled.div`
   left: 0;
   width: 40px;
   height: 40px;
-  border: 1px solid #0000005e;
+  border: 1px solid;
   border-radius: 50%;
   z-index: 9995;
   opacity: 1;
@@ -42,6 +42,7 @@ const Cursor = () => {
     color: cursorColor,
     isBlending: cursorBlending,
     text: cursorText,
+    border: borderColor,
   } = cursorSettings;
 
   //   const rotate = (distance) => {
@@ -95,6 +96,8 @@ const Cursor = () => {
           x: clientX - 20,
           y: clientY - 20,
           scale: cursorSize,
+          borderColor: borderColor,
+
           backgroundColor: cursorColor,
           mixBlendMode: cursorBlending ? "difference" : "normal",
           duration: 0.5,

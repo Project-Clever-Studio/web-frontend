@@ -10,6 +10,7 @@ export const ContextProvider = ({ children }) => {
     color: "transparent",
     isBlending: true,
     text: "",
+    border: "#00000057",
   });
   const [bounds, setBounds] = useState({
     left: 0,
