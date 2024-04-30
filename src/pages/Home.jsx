@@ -5,9 +5,10 @@ import styled from "styled-components";
 import { FaArrowRight } from "react-icons/fa";
 import SplitType from "split-type";
 import RouteTransition from "../components/RouteTransition";
-import Brands from "../components/Sections/Brands";
-import Services from "../components/Sections/Services";
-import Portfolio from "../components/Sections/home/PortfolioSection";
+import Brands from "../components/Brands";
+import Services from "../components/Services";
+import About from "../components/Sections/home/About";
+// import Portfolio from "../components/Sections/home/PortfolioSection";
 
 const Container = styled.div``;
 
@@ -20,9 +21,29 @@ const Hero = styled.div`
     flex-direction: column;
     justify-content: space-between;
   }
+  height: 200vh;
+  position: relative;
+  @media (max-width: 768px) {
+    height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 `;
 
 const ContentWrapper = styled.div`
+  padding: 0 3rem;
+  padding-top: 6rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  @media (max-width: 1080px) {
+    padding: 0 1rem;
+    padding-top: 8rem;
+    justify-content: unset;
+    height: max-content;
+  }
   padding: 0 3rem;
   padding-top: 6rem;
   height: 100vh;
@@ -48,9 +69,59 @@ const HeaderText = styled.h1`
   .line {
     overflow: hidden;
   }
+  font-family: "Mona Sans";
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 11.5vw;
+  letter-spacing: -1px;
+  width: 100%;
+  white-space: nowrap;
+  .line {
+    overflow: hidden;
+  }
 `;
 
 const Content = styled.div`
+  display: flex;
+  .info {
+    width: 35%;
+    padding-bottom: 2rem;
+    font-family: "Mona Sans";
+    h2 {
+      font-size: 3rem;
+      font-size: clamp(1.5rem, 3vw, 3rem);
+      line-height: 1;
+      padding-bottom: 1.8rem;
+      font-weight: 500;
+    }
+    p {
+      padding-bottom: 1.8rem;
+      font-size: 1.2rem;
+    }
+    span {
+      display: flex;
+      align-items: center;
+      width: fit-content;
+      border: 1px solid #000000;
+      padding: 0.5rem 1rem;
+      font-size: 1.2rem;
+      svg {
+        margin-left: 0.5rem;
+        font-size: 0.8rem;
+      }
+    }
+  }
+  @media (max-width: 1080px) {
+    padding-top: 1rem;
+    .info {
+      width: 100%;
+      padding-bottom: 1rem;
+      h2 {
+        line-height: 1.3;
+        padding-bottom: 1rem;
+      }
+    }
+  }
   display: flex;
   .info {
     width: 35%;
@@ -126,14 +197,52 @@ const ShowReel = styled.div`
       display: block;
     }
   }
+  z-index: 10;
+  perspective-origin: 50%;
+  transform-origin: 95% 100%;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  position: sticky;
+  bottom: 0%;
+  left: 0%;
+  right: 0%;
+  scale: 0.5;
+  .videoWrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    video {
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+  @media (max-width: 1080px) {
+    position: unset;
+    transform-origin: unset;
+    height: fit-content;
+    transform: none !important;
+    .videoWrapper {
+      display: block;
+    }
+  }
 `;
 
 const AboutSection = styled.div`
   padding: 0 3rem;
   padding-top: 5rem;
+  padding: 0 3rem;
+  padding-top: 5rem;
 `;
 
 const Title = styled.div`
+  text-transform: uppercase;
+  font-family: "Mona Sans";
+  font-size: 7rem;
+  font-weight: 600;
   text-transform: uppercase;
   font-family: "Mona Sans";
   font-size: 7rem;
@@ -232,7 +341,7 @@ const Home = () => {
             </div>
           </ShowReel>
         </Hero>
-        <AboutSection>{/* <Title>About Us</Title> */}</AboutSection>
+        <About />
         {/* <Portfolio /> */}
         <Services />
         <Brands />

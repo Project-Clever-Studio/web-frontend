@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { useContextProvider } from "../../utils/GlobleContextProvider";
+import { useContextProvider } from "../utils/GlobleContextProvider";
 import { color } from "framer-motion";
 
 const Container = styled.div`

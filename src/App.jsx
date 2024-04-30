@@ -7,6 +7,7 @@ import { useGSAP } from "@gsap/react";
 //Pages
 import Home from "./pages/Home";
 import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 //Css
 import "./App.scss";
@@ -56,6 +57,7 @@ function App() {
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />
           <Route path="/aboutus" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/portfolio" element={<Portfolio />} />
         </Routes>
       </AnimatePresence>

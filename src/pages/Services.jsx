@@ -4,12 +4,12 @@ import styled from "styled-components";
 
 const Container = styled.div``;
 
-const About = () => {
+const Services = () => {
   return (
     <RouteTransition>
-      <Container>About</Container>
+      <Container></Container>
     </RouteTransition>
   );
 };
 
-export default About;
+export default Services;
