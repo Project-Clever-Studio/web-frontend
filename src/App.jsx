@@ -14,15 +14,39 @@ import Navbar from "./components/Navbar";
 import Cursor from "./components/CustomCursor";
 import gsap from "gsap";
 import { AnimatePresence } from "framer-motion";
+import { useContextProvider } from "./utils/GlobleContextProvider";
+import Portfolio from "./pages/Portfolio";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 function App() {
+  const { locoScroll, setLocoScroll, setCursorSettings } = useContextProvider();
   const location = useLocation();
 
   useEffect(() => {
-    const locomotiveScroll = new LocomotiveScroll();
+    const locomotiveScroll = new LocomotiveScroll({
+      lenisOptions: {
+        smoothTouch: false,
+      },
+    });
+
+    setLocoScroll(locomotiveScroll);
   }, []);
+
+  useEffect(() => {
+    setCursorSettings({
+      size: 1,
+      isSticky: false,
+      color: "transparent",
+      isBlending: true,
+      text: "",
+      border: "#00000057",
+    });
+
+    // setTimeout(() => {
+    //   ScrollTo("top");
+    // }, 600);
+  }, [location.pathname]);
 
   return (
     <>
@@ -32,6 +56,7 @@ function App() {
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />
           <Route path="/aboutus" element={<About />} />
+          <Route path="/portfolio" element={<Portfolio />} />
         </Routes>
       </AnimatePresence>
     </>
