@@ -6,9 +6,8 @@ const Container = styled.div`
   min-height: 50vh;
   width: 100%;
   display: flex;
-  align-items: stretch; // change this
+  align-items: stretch;
   justify-content: center;
-  font-family: "Mona Sans";
   padding: 5rem 9%;
 
   @media (max-width: 1080px) {

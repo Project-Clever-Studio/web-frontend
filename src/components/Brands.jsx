@@ -13,13 +13,6 @@ const Container = styled.div`
   }
 `;
 
-const Title = styled.div`
-  text-transform: uppercase;
-  font-family: "Mona Sans";
-  font-size: 3rem;
-  font-weight: 600;
-`;
-
 const BrandsWrapper = styled.div`
   margin: 0 8vw;
   overflow: hidden;
@@ -74,7 +67,7 @@ const BrandsWrapper = styled.div`
 `;
 
 const Brands = () => {
-  const { setCursorSettings, updateBounds, resetBounds } = useContextProvider();
+  const { setCursorSettings } = useContextProvider();
   const [brands, setBrands] = useState([
     {
       url: "https://demo.themetorium.net/html/nui/assets/img/clients/client-1-dark.png",
@@ -110,8 +103,6 @@ const Brands = () => {
 
   return (
     <Container>
-      {/* <Title>Brands We've Elevated Together</Title> */}
-
       <BrandsWrapper>
         <ul>
           {brands.map((item, index) => {
@@ -139,60 +130,6 @@ const Brands = () => {
               </li>
             );
           })}
-          {/* <li>
-            <img
-              src="https://demo.themetorium.net/html/nui/assets/img/clients/client-2-dark.png"
-              alt=""
-            />
-          </li>
-          <li>
-            <img
-              src="https://demo.themetorium.net/html/nui/assets/img/clients/client-3-dark.png"
-              alt=""
-            />
-          </li>
-          <li>
-            <img
-              src="https://demo.themetorium.net/html/nui/assets/img/clients/client-10-dark.png"
-              alt=""
-            />
-          </li>
-          <li>
-            <img
-              src="https://demo.themetorium.net/html/nui/assets/img/clients/client-1-dark.png"
-              alt=""
-            />
-          </li>
-          <li>
-            <img
-              src="https://demo.themetorium.net/html/nui/assets/img/clients/client-3-dark.png"
-              alt=""
-            />
-          </li>
-          <li>
-            <img
-              src="https://demo.themetorium.net/html/nui/assets/img/clients/client-3-dark.png"
-              alt=""
-            />
-          </li>
-          <li>
-            <img
-              src="https://demo.themetorium.net/html/nui/assets/img/clients/client-10-dark.png"
-              alt=""
-            />
-          </li>
-          <li>
-            <img
-              src="https://demo.themetorium.net/html/nui/assets/img/clients/client-1-dark.png"
-              alt=""
-            />
-          </li>
-          <li>
-            <img
-              src="https://demo.themetorium.net/html/nui/assets/img/clients/client-2-dark.png"
-              alt=""
-            />
-          </li> */}
         </ul>
       </BrandsWrapper>
     </Container>

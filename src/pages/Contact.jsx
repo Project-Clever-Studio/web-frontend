@@ -9,7 +9,6 @@ const Contact = () => {
   `;
 
   const Header = styled.div`
-    font-family: "Mona Sans";
     h1 {
       color: #585858;
       font-size: 2rem;
@@ -36,7 +35,6 @@ const Contact = () => {
       gap: 1rem;
       span {
         font-size: 1.5rem;
-        font-family: "Mona Sans";
         .highlighted {
           color: #ff3c3c;
         }

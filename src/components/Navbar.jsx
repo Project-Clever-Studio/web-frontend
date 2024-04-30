@@ -34,7 +34,6 @@ const Logo = styled(Link)`
 `;
 
 const MenuBtn = styled.div`
-  font-family: "Neue Montreal";
   height: 40px;
   width: 6rem;
   background-color: red;
@@ -98,7 +97,6 @@ const Navlinks = styled.div`
   padding: 3rem;
   padding-top: 6rem;
   height: 100%;
-  font-family: "Mona Sans";
   ul {
     display: flex;
     flex-direction: column;
@@ -158,7 +156,6 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    console.log(isOpen);
     gsap.to(menuRef.current, {
       y: isOpen ? "-100%" : "0",
     });
@@ -227,7 +224,6 @@ const Navbar = () => {
         </MenuBtn>
 
         <NavContainer ref={containerRef}>
-          {/* {isOpen && ( */}
           <Navlinks>
             <ul>
               {Links.map((link, index) => (
@@ -240,7 +236,6 @@ const Navbar = () => {
               ))}
             </ul>
           </Navlinks>
-          {/* )} */}
         </NavContainer>
       </Nav>
 
