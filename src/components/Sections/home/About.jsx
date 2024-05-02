@@ -84,7 +84,7 @@ const About = () => {
       duration: 0.75,
       stagger: 0.01,
       scrollTrigger: {
-        trigger: infoRef.current,
+        trigger: titleRef.current,
         start: "top 80%",
         toggleActions: "play none none reverse",
       },
