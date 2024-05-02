@@ -11,12 +11,11 @@ const CustomCursor = styled.div`
   height: 40px;
   border: 1px solid;
   border-radius: 50%;
-  z-index: 9995;
-  opacity: 1;
   pointer-events: none;
-  @media (pointer: coarse) {
+  z-index: 9995;
+  /* @media (pointer: coarse) {
     display: none;
-  }
+  } */
 `;
 
 const CursorText = styled.p`
@@ -92,12 +91,11 @@ const Cursor = () => {
         });
       } else {
         gsap.to(cursor, {
-          rotation: 0,
+          // rotation: 0,
           x: clientX - 20,
           y: clientY - 20,
           scale: cursorSize,
           borderColor: borderColor,
-
           backgroundColor: cursorColor,
           mixBlendMode: cursorBlending ? "difference" : "normal",
           duration: 0.5,

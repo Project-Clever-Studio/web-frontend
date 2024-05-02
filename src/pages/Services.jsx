@@ -4,10 +4,14 @@ import styled from "styled-components";
 
 const Container = styled.div``;
 
+const HorizontalWrapper = styled.div``;
+
 const Services = () => {
   return (
     <RouteTransition>
-      <Container></Container>
+      <Container>
+        <HorizontalWrapper></HorizontalWrapper>
+      </Container>
     </RouteTransition>
   );
 };

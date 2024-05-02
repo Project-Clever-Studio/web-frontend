@@ -8,7 +8,7 @@ import RouteTransition from "../components/RouteTransition";
 import Brands from "../components/Brands";
 import Services from "../components/Services";
 import About from "../components/Sections/home/About";
-// import Portfolio from "../components/Sections/home/PortfolioSection";
+import PortfolioSection from "../components/Sections/home/PortfolioSection";
 
 const Container = styled.div``;
 
@@ -242,7 +242,7 @@ const Home = () => {
           </ShowReel>
         </Hero>
         <About />
-        {/* <Portfolio /> */}
+        <PortfolioSection />
         <Services />
         <Brands />
       </Container>
