@@ -23,6 +23,7 @@ html {
 
 body {
   font-family: "Mona Sans";
+  max-width: 100vw;
 }
 
 a {
@@ -41,4 +42,8 @@ a {
   &:hover {
     transform: scale(5);
   }
+}
+
+.line {
+  overflow: hidden;
 }

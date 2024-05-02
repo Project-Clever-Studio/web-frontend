@@ -3,11 +3,7 @@ import gsap from "gsap";
 import React, { useRef } from "react";
 import styled from "styled-components";
 
-const padding = 8;
-
 const Container = styled.div`
-  width: 100%;
-  padding: 0 ${padding}rem;
   padding-top: 10rem;
   overflow: hidden;
 `;
@@ -16,6 +12,8 @@ const Title = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
+  padding: 0 8rem;
+
   h2 {
     font-size: 6rem;
     font-weight: 600;
@@ -38,6 +36,7 @@ const HorizontalWrapper = styled.div`
   margin-top: 3rem;
   display: flex;
   gap: 1rem;
+  padding: 0 8rem;
 
   .card {
     position: relative;
@@ -125,19 +124,15 @@ const Services = () => {
 
   useGSAP(() => {
     gsap.to(horizontalSection.current, {
+      duration: 0.1,
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top -10%",
-        markers: true,
         pin: true,
-        scrub: 0.5,
-        end: () => "+=" + horizontalSection.current.offsetWidth,
+        scrub: 0.01,
+        end: "+=1500px",
       },
-      x: -(
-        horizontalSection.current.offsetWidth -
-        window.innerWidth +
-        padding * 16 * 2
-      ),
+      x: -(horizontalSection.current.offsetWidth - window.innerWidth),
     });
   });
 

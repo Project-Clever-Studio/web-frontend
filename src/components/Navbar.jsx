@@ -79,6 +79,9 @@ const NavContainer = styled.div`
   margin: 2rem 3rem;
   z-index: 99998;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 const Backdrop = styled.div`
@@ -96,16 +99,43 @@ const Backdrop = styled.div`
 const Navlinks = styled.div`
   padding: 3rem;
   padding-top: 6rem;
-  height: 100%;
+  height: max-content;
   ul {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     li {
       list-style: none;
+      display: block;
+      position: relative;
+      width: fit-content;
       a {
         font-size: 3rem;
         color: #fff;
+      }
+      .hover_link {
+        position: absolute;
+        left: 0;
+      }
+    }
+  }
+`;
+
+const SocialLinks = styled.div`
+  padding: 3rem;
+  ul {
+    display: flex;
+    justify-content: flex-end;
+    li {
+      padding: 0 0.5rem;
+      list-style: none;
+      a {
+        color: #fff;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+      &:last-child {
+        padding-right: 0;
       }
     }
   }
@@ -134,6 +164,29 @@ const Links = [
   },
 ];
 
+const SocialLink = [
+  {
+    title: "LinkedIn",
+    href: "https://www.linkedin.com/company/cleverstudioin/",
+  },
+  {
+    title: "Instagram",
+    href: "https://www.instagram.com/cleverstudio.in?igsh=MTQ1Zjhreml4N2NtMA==",
+  },
+  {
+    title: "Facebook",
+    href: "https://m.facebook.com/people/CleverStudio/100090029329206/",
+  },
+  {
+    title: "Discord",
+    href: "https://discord.com/invite/RtmJusy4",
+  },
+  {
+    title: "Whatsapp",
+    href: "https://chat.whatsapp.com/J7fzQ9edJRf0tWJUonIECj",
+  },
+];
+
 const Navbar = () => {
   const { setCursorSettings } = useContextProvider();
   const [isOpen, setIsOpen] = useState(false);
@@ -142,6 +195,7 @@ const Navbar = () => {
   const containerRef = useRef(null);
   const backdropRef = useRef(null);
   const liRefs = useRef([]);
+  const socialRefs = useRef([]);
   const location = useLocation();
 
   useEffect(() => {
@@ -171,6 +225,10 @@ const Navbar = () => {
       onComplete: () => setIsAnimating(false),
     });
 
+    gsap.set(socialRefs.current, {
+      y: isOpen ? 100 : 0,
+    });
+
     gsap.set(liRefs.current, {
       y: isOpen ? 100 : 0,
     });
@@ -181,6 +239,15 @@ const Navbar = () => {
       stagger: 0.05,
       duration: 0.75,
       delay: isOpen ? 0.25 : 0,
+      ease: "power3.out",
+    });
+
+    gsap.to(socialRefs.current, {
+      opacity: isOpen ? 1 : 0,
+      y: 0,
+      stagger: 0.03,
+      duration: 0.75,
+      delay: 0.5,
       ease: "power3.out",
     });
 
@@ -232,10 +299,27 @@ const Navbar = () => {
                   ref={(element) => (liRefs.current[index] = element)}
                 >
                   <Link to={link.href}>{link.title}</Link>
+                  {/* <Link className="hover_link" to={link.href}>
+                    {link.title}
+                  </Link> */}
                 </li>
               ))}
             </ul>
           </Navlinks>
+          <SocialLinks>
+            <ul>
+              {SocialLink.map((link, index) => (
+                <li
+                  key={index}
+                  ref={(element) => (socialRefs.current[index] = element)}
+                >
+                  <a href={link.href} target="_blank">
+                    {link.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </SocialLinks>
         </NavContainer>
       </Nav>
 

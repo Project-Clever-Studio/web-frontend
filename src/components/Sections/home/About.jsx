@@ -15,8 +15,10 @@ const Title = styled.div`
   h2 {
     font-size: 3rem;
     font-weight: 500;
+    font-kerning: none;
     .line {
       overflow: hidden;
+      width: fit-content;
     }
   }
 `;
