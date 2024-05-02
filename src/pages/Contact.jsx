@@ -1,47 +1,146 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import RouteTransition from "../components/RouteTransition";
 import styled from "styled-components";
 
 const Contact = () => {
   const Container = styled.div`
-    padding: 0 3rem;
-    padding-top: 8rem;
+    padding: 10rem 8rem;
   `;
 
-  const Header = styled.div`
-    h1 {
-      color: #585858;
-      font-size: 2rem;
-      font-weight: 500;
-    }
-
-    p {
-      width: 35%;
-      font-size: 3rem;
-      margin-top: 0.8rem;
-      font-weight: 600;
-    }
+  const ContactWrapper = styled.div`
+    display: flex;
   `;
 
-  const Form = styled.div`
+  const InfoSection = styled.div`
+    width: 50%;
     display: flex;
     flex-direction: column;
-    gap: 3rem;
-    margin-top: 4rem;
-    width: 70%;
+    gap: 4rem;
 
-    div {
+    h1 {
       display: flex;
-      gap: 1rem;
+      flex-direction: column;
+      font-family: "Mona Sans";
+      font-weight: 700;
+      font-size: 6vw;
+
       span {
-        font-size: 1.5rem;
-        .highlighted {
-          color: #ff3c3c;
+        line-height: 1;
+      }
+    }
+    p {
+      width: 50%;
+      font-family: "Mona Sans";
+      font-weight: 500;
+      font-size: 2rem;
+    }
+
+    .socials {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+
+      .social {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        span {
+          opacity: 0.5;
+          font-size: 1.2rem;
+        }
+        p {
+          line-height: 1.4;
+          width: 100%;
+          font-size: 1.2rem;
+        }
+        a {
+          text-decoration: underline;
+          text-underline-offset: 0.4rem;
+          color: #000;
+          font-size: 1.2rem;
         }
       }
-      .input {
-        width: 35%;
-        border-bottom: 2px solid #a0a0a0;
+    }
+  `;
+
+  const FormSection = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    width: 50%;
+
+    .formHeader {
+      margin-top: 3dvh;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+
+      span {
+        font-size: 3rem;
+      }
+
+      .italic {
+        font-style: italic;
+      }
+    }
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      .dualInput,
+      .singleInput {
+        width: 100%;
+        display: flex;
+        gap: 1.5rem;
+        .input {
+          display: flex;
+          flex-direction: column;
+          gap: 0.6rem;
+          height: 100%;
+          width: 100%;
+
+          span {
+            font-weight: 500;
+            color: #000000d1;
+          }
+
+          .highlighted {
+            color: #ff3939;
+          }
+
+          input,
+          textarea {
+            font-family: "Mona Sans";
+            font-size: 1rem;
+            font-weight: 400;
+            outline: none;
+            padding: 0.8rem 1rem;
+            border: 1.5px solid #00000018;
+            border-bottom: 3px solid #00000016;
+            border-radius: 8px;
+            transition: all 0.2s ease-in-out;
+
+            &:focus {
+              border: 1.5px solid #0000006a;
+              border-bottom: 3px solid #000000c0;
+            }
+          }
+        }
+      }
+
+      .submit {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        width: fit-content;
+        padding: 1rem 2.5rem;
+        border: 1px solid #000;
+        border-radius: 99px;
+
+        svg {
+          margin-top: -2px;
+        }
       }
     }
   `;
@@ -49,44 +148,120 @@ const Contact = () => {
   return (
     <RouteTransition>
       <Container>
-        <Header>
-          <h1>Contact Us</h1>
-          <p>Reach out to us for innovative media solutions.</p>
-        </Header>
-        <Form>
-          <div>
-            <span>
-              My name is<span className="highlighted">*</span>
-            </span>
-            <div className="input"></div>
-            <span>and i work for</span>
-            <div className="input"></div>
-          </div>
-          <div>
-            <span>
-              My name is<span className="highlighted">*</span>
-            </span>
-            <div className="input"></div>
-            <span>and i work for</span>
-            <div className="input"></div>
-          </div>
-          <div>
-            <span>
-              My name is<span className="highlighted">*</span>
-            </span>
-            <div className="input"></div>
-            <span>and i work for</span>
-            <div className="input"></div>
-          </div>
-          <div>
-            <span>
-              My name is<span className="highlighted">*</span>
-            </span>
-            <div className="input"></div>
-            <span>and i work for</span>
-            <div className="input"></div>
-          </div>
-        </Form>
+        <ContactWrapper>
+          <InfoSection>
+            <h1>
+              <span>Let's get</span>
+              <span>in touch</span>
+            </h1>
+            <p>Reach out to us for innovative solutions.</p>
+            <div className="socials">
+              <div className="social">
+                <span>Phone</span>
+                <p>+91 84540 77244</p>
+              </div>
+              <div className="social">
+                <span>Email</span>
+                <p>kushal@cleverstudio.in</p>
+              </div>
+              <div className="social">
+                <span>Office</span>
+                <p>
+                  14/03, Station Road,
+                  <br />
+                  Bhandup Mumbai 400078
+                </p>
+                <a href="#">Map Us</a>
+              </div>
+            </div>
+          </InfoSection>
+          <FormSection>
+            <div className="formHeader">
+              <svg
+                width="50"
+                height="40"
+                viewBox="0 0 32 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M31.057 13.0608C31.6445 12.4767 31.6473 11.527 31.0632 10.9395L21.5448 1.36607C20.9607 0.778593 20.011 0.775852 19.4235 1.35995C18.836 1.94404 18.8333 2.89378 19.4174 3.48126L27.8781 11.991L19.3684 20.4518C18.7809 21.0358 18.7782 21.9856 19.3623 22.5731C19.9464 23.1605 20.8961 23.1633 21.4836 22.5792L31.057 13.0608ZM-0.00475599 13.4105L29.9951 13.4971L30.0038 10.4971L0.0039015 10.4105L-0.00475599 13.4105Z"
+                  fill="black"
+                />
+              </svg>
+
+              <span>
+                Let's <span className="italic">level up</span> your brand,
+                together!
+              </span>
+            </div>
+            <div className="form">
+              <div className="dualInput">
+                <div className="input">
+                  <span>
+                    Name <span className="highlighted">*</span>
+                  </span>
+                  <input type="text" name="name" />
+                </div>
+                <div className="input">
+                  <span>
+                    Working for <span className="highlighted">*</span>
+                  </span>
+                  <input type="text" name="company" />
+                </div>
+              </div>
+              <div className="singleInput">
+                <div className="input">
+                  <span>
+                    Email <span className="highlighted">*</span>
+                  </span>
+                  <input type="email" name="email" />
+                </div>
+              </div>
+              <div className="dualInput">
+                <div className="input">
+                  <span>
+                    Phone <span className="highlighted">*</span>
+                  </span>
+                  <input type="text" name="name" />
+                </div>
+                <div className="input">
+                  <span>Budget</span>
+                  <input type="text" name="company" />
+                </div>
+              </div>
+              <div className="singleInput">
+                <div className="input">
+                  <span>
+                    Interested in <span className="highlighted">*</span>
+                  </span>
+                  <input type="text" name="name" />
+                </div>
+              </div>
+              <div className="singleInput">
+                <div className="input">
+                  <span>Additional details</span>
+                  <textarea rows={6} name="name" />
+                </div>
+              </div>
+              <div className="submit">
+                <span>Submit</span>
+                <svg
+                  width="18"
+                  height="12"
+                  viewBox="0 0 18 12"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M17.5303 6.53033C17.8232 6.23744 17.8232 5.76256 17.5303 5.46967L12.7574 0.696699C12.4645 0.403806 11.9896 0.403806 11.6967 0.696699C11.4038 0.989592 11.4038 1.46447 11.6967 1.75736L15.9393 6L11.6967 10.2426C11.4038 10.5355 11.4038 11.0104 11.6967 11.3033C11.9896 11.5962 12.4645 11.5962 12.7574 11.3033L17.5303 6.53033ZM0 6.75H17V5.25H0V6.75Z"
+                    fill="black"
+                  />
+                </svg>
+              </div>
+            </div>
+          </FormSection>
+        </ContactWrapper>
       </Container>
     </RouteTransition>
   );

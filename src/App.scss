@@ -8,6 +8,11 @@
   box-sizing: border-box;
 }
 
+::selection {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
 html {
   scrollbar-width: none;
   -ms-overflow-style: none;
