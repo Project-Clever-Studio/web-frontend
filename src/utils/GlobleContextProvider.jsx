@@ -8,7 +8,7 @@ export const ContextProvider = ({ children }) => {
     size: 1,
     isSticky: false,
     color: "transparent",
-    isBlending: true,
+    isBlending: false,
     text: "",
     border: "#00000057",
   });
