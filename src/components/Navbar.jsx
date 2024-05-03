@@ -259,10 +259,23 @@ const Navbar = () => {
     });
   }, [isOpen]);
 
+  useEffect(() => {
+    const hideLogo = () => {
+      gsap.to(".logo", {
+        opacity: window.scrollY > 500 ? 0 : 1,
+      });
+    };
+
+    window.addEventListener("scroll", hideLogo);
+    return () => {
+      window.removeEventListener("scroll", hideLogo);
+    };
+  }, []);
+
   return (
     <Container>
       <Nav>
-        <Logo to="/">
+        <Logo to="/" className="logo">
           <img src={LogoImg} alt="Logo" />
         </Logo>
         <MenuBtn
