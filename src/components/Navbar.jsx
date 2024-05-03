@@ -1,10 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import LogoImg from "../assets/Logo/Logo_dark.png";
-import { BiMenuAltLeft } from "react-icons/bi";
 import { Link, useLocation } from "react-router-dom";
 import { useContextProvider } from "../utils/GlobleContextProvider";
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 const Container = styled.div`
@@ -18,10 +16,9 @@ const Nav = styled.div`
   align-items: center;
   justify-content: space-between;
   margin: 2rem 3rem;
-  /* 
   @media (max-width: 768px) {
-    margin: 2rem 1rem;
-  } */
+    margin: 1rem 1rem;
+  }
 `;
 
 const Logo = styled(Link)`
@@ -82,6 +79,9 @@ const NavContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  @media (max-width: 768px) {
+    margin: 1rem 1rem;
+  }
 `;
 
 const Backdrop = styled.div`
@@ -119,6 +119,18 @@ const Navlinks = styled.div`
       }
     }
   }
+
+  @media (max-width: 768px) {
+    padding: 2rem;
+    padding-top: 6rem;
+    ul {
+      li {
+        a {
+          font-size: 2.5rem;
+        }
+      }
+    }
+  }
 `;
 
 const SocialLinks = styled.div`
@@ -136,6 +148,17 @@ const SocialLinks = styled.div`
       }
       &:last-child {
         padding-right: 0;
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    padding: 2rem;
+    ul {
+      li {
+        padding: 0 0.3rem;
+        a {
+          font-size: 0.7rem;
+        }
       }
     }
   }
@@ -210,53 +233,67 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    gsap.to(menuRef.current, {
-      y: isOpen ? "-100%" : "0",
-    });
+    let mm = gsap.matchMedia();
 
-    gsap.to(containerRef.current, {
-      height: isOpen ? "80vh" : "40px",
-      width: isOpen ? "30vw" : "6rem",
-      top: isOpen ? "-20px" : "0",
-      right: isOpen ? "-20px" : "0",
-      delay: isOpen ? 0 : 0.4,
-      duration: 0.6,
-      ease: "power4.out",
-      onComplete: () => setIsAnimating(false),
-    });
+    mm.add(
+      { isMobile: "(max-width: 768px)", isDesktop: "(min-width: 769px)" },
+      (context) => {
+        let { isMobile } = context.conditions;
 
-    gsap.set(socialRefs.current, {
-      y: isOpen ? 100 : 0,
-    });
+        const width = isOpen ? (isMobile ? "90vw" : "30vw") : "6rem";
+        const height = isOpen ? (isMobile ? "90vw" : "30vw") : "6rem";
+        const top = isOpen ? (isMobile ? "-10px" : "-20px") : "0";
+        const right = isOpen ? (isMobile ? "-10px" : "-20px") : "0";
 
-    gsap.set(liRefs.current, {
-      y: isOpen ? 100 : 0,
-    });
+        gsap.to(menuRef.current, {
+          y: isOpen ? "-100%" : "0",
+        });
 
-    gsap.to(liRefs.current, {
-      opacity: isOpen ? 1 : 0,
-      y: 0,
-      stagger: 0.05,
-      duration: 0.75,
-      delay: isOpen ? 0.25 : 0,
-      ease: "power3.out",
-    });
+        gsap.to(containerRef.current, {
+          height: isOpen ? "80vh" : "40px",
+          width: width,
+          top: top,
+          right: right,
+          delay: isOpen ? 0 : 0.4,
+          duration: 0.6,
+          ease: "power4.out",
+          onComplete: () => setIsAnimating(false),
+        });
 
-    gsap.to(socialRefs.current, {
-      opacity: isOpen ? 1 : 0,
-      y: 0,
-      stagger: 0.03,
-      duration: 0.75,
-      delay: 0.5,
-      ease: "power3.out",
-    });
+        gsap.set(socialRefs.current, {
+          y: isOpen ? 100 : 0,
+        });
 
-    gsap.to(backdropRef.current, {
-      opacity: isOpen ? 1 : 0,
-      display: isOpen ? "block" : "none",
-      delay: isOpen ? 0 : 0.3,
-      duration: 0.5,
-    });
+        gsap.set(liRefs.current, {
+          y: isOpen ? 100 : 0,
+        });
+
+        gsap.to(liRefs.current, {
+          opacity: isOpen ? 1 : 0,
+          y: 0,
+          stagger: 0.05,
+          duration: 0.75,
+          delay: isOpen ? 0.25 : 0,
+          ease: "power3.out",
+        });
+
+        gsap.to(socialRefs.current, {
+          opacity: isOpen ? 1 : 0,
+          y: 0,
+          stagger: 0.03,
+          duration: 0.75,
+          delay: 0.5,
+          ease: "power3.out",
+        });
+
+        gsap.to(backdropRef.current, {
+          opacity: isOpen ? 1 : 0,
+          display: isOpen ? "block" : "none",
+          delay: isOpen ? 0 : 0.3,
+          duration: 0.5,
+        });
+      }
+    );
   }, [isOpen]);
 
   useEffect(() => {

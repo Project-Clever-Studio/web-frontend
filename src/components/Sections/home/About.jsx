@@ -1,4 +1,3 @@
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import React, { useEffect, useRef } from "react";
 import SplitType from "split-type";
@@ -8,6 +7,13 @@ import { HiMiniArrowLongRight } from "react-icons/hi2";
 const Container = styled.div`
   padding: 10rem 8rem;
   padding-bottom: 5rem;
+  @media (max-width: 1080px) {
+    padding: 5rem 2rem;
+    padding-bottom: 3rem;
+  }
+  @media (max-width: 768px) {
+    padding: 3rem 1rem;
+  }
 `;
 
 const Title = styled.div`
@@ -16,6 +22,12 @@ const Title = styled.div`
     font-size: 3rem;
     font-weight: 500;
     font-kerning: none;
+  }
+  @media (max-width: 1080px) {
+    width: 100%;
+    h2 {
+      font-size: 1.8rem;
+    }
   }
 `;
 
@@ -26,14 +38,10 @@ const Content = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-`;
-
-const Button = styled.div`
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid #000;
-  span {
-    margin-right: 0.5rem;
+  @media (max-width: 1080px) {
+  }
+  @media (max-width: 768px) {
+    margin-top: 2rem;
   }
 `;
 
@@ -43,6 +51,31 @@ const Info = styled.div`
     line-height: 1.4;
     font-size: 1.4rem;
   }
+  @media (max-width: 1080px) {
+    width: 70%;
+    p {
+      line-height: 1.4;
+      font-size: 1.2rem;
+    }
+  }
+  @media (max-width: 768px) {
+    width: 90%;
+    p {
+      line-height: 1.4;
+      font-size: 1rem;
+    }
+  }
+`;
+
+const Button = styled.div`
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #000;
+  span {
+    margin-right: 0.5rem;
+  }
+  @media (max-width: 768px) {
+  }
 `;
 
 const About = () => {
@@ -50,10 +83,14 @@ const About = () => {
   const titleRef = useRef(null);
 
   useEffect(() => {
-    const titleSplit = SplitType.create(titleRef.current);
-    const infoSplit = SplitType.create(infoRef.current);
+    const titleSplit = SplitType.create(titleRef.current, {
+      types: "words",
+    });
+    const infoSplit = SplitType.create(infoRef.current, {
+      types: "words",
+    });
 
-    gsap.set(infoSplit.lines, {
+    gsap.set(infoSplit.words, {
       opacity: 0,
       filter: "blur(5px)",
       y: 100,
@@ -64,11 +101,11 @@ const About = () => {
       y: 100,
     });
 
-    const infoAnimation = gsap.to(infoSplit.lines, {
+    const infoAnimation = gsap.to(infoSplit.words, {
       opacity: 1,
       y: 0,
       filter: "blur(0px)",
-      stagger: 0.03,
+      stagger: 0.004,
       duration: 0.75,
       delay: 0.3,
       scrollTrigger: {

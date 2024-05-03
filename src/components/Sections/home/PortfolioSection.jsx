@@ -5,6 +5,14 @@ import { useContextProvider } from "../../../utils/GlobleContextProvider";
 const Container = styled.div`
   padding: 0 8rem;
   padding-top: 10rem;
+  @media (max-width: 1080px) {
+    padding: 0 2rem;
+    padding-top: 6rem;
+  }
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+    padding-top: 4rem;
+  }
 `;
 
 const Title = styled.div`
@@ -18,6 +26,22 @@ const Title = styled.div`
       padding-left: 15rem;
     }
   }
+  @media (max-width: 1080px) {
+    font-size: 4rem;
+    span {
+      &:last-child {
+        padding-left: 8rem;
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    font-size: 2.8rem;
+    span {
+      &:last-child {
+        padding-left: 5rem;
+      }
+    }
+  }
 `;
 
 const ProjectWrapper = styled.div`
@@ -26,6 +50,9 @@ const ProjectWrapper = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 4rem;
+  @media (max-width: 1080px) {
+    margin-top: 2rem;
+  }
 `;
 
 const ProjectCard = styled.div`
@@ -33,6 +60,23 @@ const ProjectCard = styled.div`
   height: fit-content;
   &:nth-child(even) {
     margin-top: 6rem;
+  }
+  @media (max-width: 1080px) {
+    width: calc(50% - 0.8rem);
+    &:nth-child(even) {
+      margin-top: 3rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    &:nth-child(even) {
+      margin-top: 0;
+    }
+    margin-bottom: 2rem;
+    &:last-child {
+      margin: 0;
+    }
   }
 `;
 
@@ -69,6 +113,24 @@ const InfoWrapper = styled.div`
   h2 {
     font-size: 2rem;
     font-weight: 500;
+  }
+  @media (max-width: 1080px) {
+    margin-top: 0.5rem;
+    .info {
+      padding: 0.3rem 0;
+      p {
+        padding: 0 0.3rem;
+        font-size: 1rem;
+        font-weight: 400;
+        &:first-child {
+          padding-left: 0;
+        }
+      }
+    }
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 500;
+    }
   }
 `;
 

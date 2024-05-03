@@ -40,7 +40,7 @@ const ContentWrapper = styled.div`
   justify-content: space-between;
   @media (max-width: 1080px) {
     padding: 0 1rem;
-    padding-top: 8rem;
+    padding-top: 7rem;
     justify-content: unset;
     height: max-content;
   }
@@ -56,6 +56,10 @@ const HeaderText = styled.h1`
   white-space: nowrap;
   .line {
     overflow: hidden;
+  }
+  @media (max-width: 768px) {
+    font-weight: 600;
+    letter-spacing: -2px;
   }
 `;
 
@@ -100,6 +104,21 @@ const Content = styled.div`
       }
     }
   }
+  @media (max-width: 768px) {
+    .info {
+      padding-bottom: 1rem;
+      h2 {
+        padding-bottom: 1rem;
+        font-size: 1.2rem;
+        line-height: 1.2;
+      }
+      p {
+        width: 90%;
+        padding-bottom: 1rem;
+        font-size: 0.9rem;
+      }
+    }
+  }
 `;
 
 const ShowReel = styled.div`
@@ -109,7 +128,7 @@ const ShowReel = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100dvh;
+  height: 100svh;
   display: flex;
   position: sticky;
   bottom: 0%;
@@ -147,32 +166,35 @@ const Home = () => {
     const headerTextSplit = SplitType.create(headerTextRef.current);
     const infoSplit = SplitType.create(infoRef.current);
 
-    // Show Reel Animation
-    gsap.to(showReelRef.current, {
-      scale: 1,
-      ease: "none",
-      scrollTrigger: {
-        trigger: showReelRef.current,
-        start: "top 50%",
-        end: "bottom 10%",
-        scrub: 0.1,
-      },
-    });
+    let mm = gsap.matchMedia();
 
-    // Header Animation
-    gsap.to(heroRef.current, {
-      backgroundColor: "#7d7d7d",
-      scrollTrigger: {
-        trigger: heroRef.current,
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 0.3,
-      },
+    mm.add("(min-width: 1080px)", () => {
+      gsap.to(showReelRef.current, {
+        scale: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: showReelRef.current,
+          start: "top 50%",
+          end: "bottom 10%",
+          scrub: 0.1,
+        },
+      });
+
+      gsap.to(heroRef.current, {
+        backgroundColor: "#7d7d7d",
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 0.3,
+        },
+      });
     });
 
     gsap.set(headerTextSplit.chars, {
       yPercent: 100,
     });
+
     gsap.set(infoSplit.words, {
       opacity: 0,
     });

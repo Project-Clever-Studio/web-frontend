@@ -6,6 +6,10 @@ import styled from "styled-components";
 const Container = styled.div`
   padding-top: 10rem;
   overflow: hidden;
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+    padding-top: 5rem;
+  }
 `;
 
 const Title = styled.div`
@@ -13,7 +17,6 @@ const Title = styled.div`
   align-items: flex-end;
   justify-content: space-between;
   padding: 0 8rem;
-
   h2 {
     font-size: 6rem;
     font-weight: 600;
@@ -23,11 +26,24 @@ const Title = styled.div`
       display: block;
     }
   }
-
   p {
     width: 35%;
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
+  }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0;
+    h2 {
+      font-size: 2.8rem;
+    }
+    p {
+      width: 100%;
+      margin-top: 1rem;
+      font-size: 1rem;
+    }
   }
 `;
 
@@ -122,6 +138,14 @@ const HorizontalWrapper = styled.div`
           transform: rotate(45deg);
         }
       }
+    }
+  }
+
+  @media (max-width: 768px) {
+    margin-top: 2rem;
+    padding: 0;
+    .card {
+      width: 80vw;
     }
   }
 `;
