@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import LocomotiveScroll from "locomotive-scroll";
 import { ScrollTrigger } from "gsap/all";
@@ -23,6 +23,7 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 function App() {
   const { locoScroll, setLocoScroll, setCursorSettings } = useContextProvider();
   const location = useLocation();
+  const AppRef = useRef(null);
 
   useEffect(() => {
     const locomotiveScroll = new LocomotiveScroll({
@@ -32,7 +33,27 @@ function App() {
     });
 
     setLocoScroll(locomotiveScroll);
+
+    const refreshScrollTrigger = () => {
+      ScrollTrigger.refresh();
+    };
+
+    const observer = new ResizeObserver(refreshScrollTrigger);
+    observer.observe(AppRef.current);
+
+    return () => {
+      observer.disconnect();
+    };
   }, []);
+
+  const ScrollTo = (target) => {
+    if (locoScroll)
+      locoScroll.scrollTo(target, {
+        options: {
+          immediate: true,
+        },
+      });
+  };
 
   useEffect(() => {
     setCursorSettings({
@@ -44,13 +65,13 @@ function App() {
       border: "#00000057",
     });
 
-    // setTimeout(() => {
-    //   ScrollTo("top");
-    // }, 600);
+    setTimeout(() => {
+      ScrollTo("top");
+    }, 600);
   }, [location.pathname]);
 
   return (
-    <>
+    <div ref={AppRef}>
       <Cursor />
       <Navbar />
       <AnimatePresence initial={false} mode={"wait"}>
@@ -61,7 +82,7 @@ function App() {
           <Route path="/portfolio" element={<Portfolio />} />
         </Routes>
       </AnimatePresence>
-    </>
+    </div>
   );
 }
 

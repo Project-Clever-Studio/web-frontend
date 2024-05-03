@@ -109,7 +109,7 @@ const ShowReel = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
+  height: 100dvh;
   display: flex;
   position: sticky;
   bottom: 0%;
@@ -135,18 +135,6 @@ const ShowReel = styled.div`
       display: block;
     }
   }
-`;
-
-const AboutSection = styled.div`
-  padding: 0 3rem;
-  padding-top: 5rem;
-`;
-
-const Title = styled.div`
-  text-transform: uppercase;
-  font-family: "Mona Sans";
-  font-size: 7rem;
-  font-weight: 600;
 `;
 
 const Home = () => {

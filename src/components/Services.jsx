@@ -126,6 +126,51 @@ const HorizontalWrapper = styled.div`
   }
 `;
 
+const Cards = [
+  {
+    image:
+      "https://images.unsplash.com/photo-1579567761406-4684ee0c75b6?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    service: "Web Dev",
+    info: "We specialize in crafting tailored web development solutions that elevate your online presence and drive business growth.",
+  },
+  {
+    image:
+      "https://images.unsplash.com/photo-1613575998061-0f59337425f2?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    service: "App Dev",
+    info: "We specialize in crafting tailored web development solutions that elevate your online presence and drive business growth.",
+  },
+  {
+    image:
+      "https://images.unsplash.com/photo-1604076913837-52ab5629fba9?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    service: "Backend Dev",
+    info: "We specialize in crafting tailored web development solutions that elevate your online presence and drive business growth.",
+  },
+  {
+    image:
+      "https://images.unsplash.com/photo-1604076913837-52ab5629fba9?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    service: "Web Dev",
+    info: "We specialize in crafting tailored web development solutions that elevate your online presence and drive business growth.",
+  },
+  {
+    image:
+      "https://images.unsplash.com/photo-1604076913837-52ab5629fba9?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    service: "Web Dev",
+    info: "We specialize in crafting tailored web development solutions that elevate your online presence and drive business growth.",
+  },
+  {
+    image:
+      "https://images.unsplash.com/photo-1604076913837-52ab5629fba9?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    service: "Web Dev",
+    info: "We specialize in crafting tailored web development solutions that elevate your online presence and drive business growth.",
+  },
+  {
+    image:
+      "https://images.unsplash.com/photo-1604076913837-52ab5629fba9?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    service: "Web Dev",
+    info: "We specialize in crafting tailored web development solutions that elevate your online presence and drive business growth.",
+  },
+];
+
 const Services = () => {
   const containerRef = useRef(null);
   const horizontalSection = useRef(null);
@@ -157,180 +202,31 @@ const Services = () => {
         </p>
       </Title>
       <HorizontalWrapper ref={horizontalSection}>
-        <div className="card">
-          <div className="image">
-            <img
-              src="https://images.unsplash.com/photo-1604076913837-52ab5629fba9?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt=""
-            />
-          </div>
-          <div className="tag">Product shoot</div>
-          <div className="info">
-            <span>
-              We specialize in crafting tailored web development solutions that
-              elevate your online presence and drive business growth.
-            </span>
-            <div className="visit">
-              <svg
-                width="17"
-                height="17"
-                viewBox="0 0 17 17"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M16.3211 1.92894C16.3211 1.23858 15.7614 0.67894 15.0711 0.67894H3.82109C3.13073 0.67894 2.57109 1.23858 2.57109 1.92894C2.57109 2.6193 3.13073 3.17894 3.82109 3.17894H13.8211V13.1789C13.8211 13.8693 14.3807 14.4289 15.0711 14.4289C15.7614 14.4289 16.3211 13.8693 16.3211 13.1789V1.92894ZM1.81284 16.955L15.955 2.81282L14.1872 1.04506L0.0450716 15.1872L1.81284 16.955Z"
-                  fill="black"
-                />
-              </svg>
+        {Cards.map((item, index) => (
+          <div className="card" key={index}>
+            <div className="image">
+              <img src={item.image} alt="" />
+            </div>
+            <div className="tag">{item.service}</div>
+            <div className="info">
+              <span>{item.info}</span>
+              <div className="visit">
+                <svg
+                  width="17"
+                  height="17"
+                  viewBox="0 0 17 17"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M16.3211 1.92894C16.3211 1.23858 15.7614 0.67894 15.0711 0.67894H3.82109C3.13073 0.67894 2.57109 1.23858 2.57109 1.92894C2.57109 2.6193 3.13073 3.17894 3.82109 3.17894H13.8211V13.1789C13.8211 13.8693 14.3807 14.4289 15.0711 14.4289C15.7614 14.4289 16.3211 13.8693 16.3211 13.1789V1.92894ZM1.81284 16.955L15.955 2.81282L14.1872 1.04506L0.0450716 15.1872L1.81284 16.955Z"
+                    fill="black"
+                  />
+                </svg>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="card">
-          <div className="image">
-            <img
-              src="https://images.unsplash.com/photo-1646038572806-3d5f4252c567?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt=""
-            />
-          </div>
-          <div className="tag">Event shoot</div>
-          <div className="info">
-            <span>
-              We specialize in crafting tailored web development solutions that
-              elevate your online presence and drive business growth.
-            </span>
-            <div className="visit">
-              <svg
-                width="17"
-                height="17"
-                viewBox="0 0 17 17"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M16.3211 1.92894C16.3211 1.23858 15.7614 0.67894 15.0711 0.67894H3.82109C3.13073 0.67894 2.57109 1.23858 2.57109 1.92894C2.57109 2.6193 3.13073 3.17894 3.82109 3.17894H13.8211V13.1789C13.8211 13.8693 14.3807 14.4289 15.0711 14.4289C15.7614 14.4289 16.3211 13.8693 16.3211 13.1789V1.92894ZM1.81284 16.955L15.955 2.81282L14.1872 1.04506L0.0450716 15.1872L1.81284 16.955Z"
-                  fill="black"
-                />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div className="card">
-          <div className="image">
-            <img
-              src="https://images.unsplash.com/photo-1604077350837-c7f82f28653f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt=""
-            />
-          </div>
-          <div className="tag">Reels shoot</div>
-          <div className="info">
-            <span>
-              We specialize in crafting tailored web development solutions that
-              elevate your online presence and drive business growth.
-            </span>
-            <div className="visit">
-              <svg
-                width="17"
-                height="17"
-                viewBox="0 0 17 17"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M16.3211 1.92894C16.3211 1.23858 15.7614 0.67894 15.0711 0.67894H3.82109C3.13073 0.67894 2.57109 1.23858 2.57109 1.92894C2.57109 2.6193 3.13073 3.17894 3.82109 3.17894H13.8211V13.1789C13.8211 13.8693 14.3807 14.4289 15.0711 14.4289C15.7614 14.4289 16.3211 13.8693 16.3211 13.1789V1.92894ZM1.81284 16.955L15.955 2.81282L14.1872 1.04506L0.0450716 15.1872L1.81284 16.955Z"
-                  fill="black"
-                />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div className="card">
-          <div className="image">
-            <img
-              src="https://images.unsplash.com/photo-1604076850742-4c7221f3101b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt=""
-            />
-          </div>
-          <div className="tag">Smart contract</div>
-          <div className="info">
-            <span>
-              We specialize in crafting tailored web development solutions that
-              elevate your online presence and drive business growth.
-            </span>
-            <div className="visit">
-              <svg
-                width="17"
-                height="17"
-                viewBox="0 0 17 17"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M16.3211 1.92894C16.3211 1.23858 15.7614 0.67894 15.0711 0.67894H3.82109C3.13073 0.67894 2.57109 1.23858 2.57109 1.92894C2.57109 2.6193 3.13073 3.17894 3.82109 3.17894H13.8211V13.1789C13.8211 13.8693 14.3807 14.4289 15.0711 14.4289C15.7614 14.4289 16.3211 13.8693 16.3211 13.1789V1.92894ZM1.81284 16.955L15.955 2.81282L14.1872 1.04506L0.0450716 15.1872L1.81284 16.955Z"
-                  fill="black"
-                />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div className="card">
-          <div className="image">
-            <img
-              src="https://images.unsplash.com/photo-1569982175971-d92b01cf8694?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt=""
-            />
-          </div>
-          <div className="tag">NFT Creation</div>
-          <div className="info">
-            <span>
-              We specialize in crafting tailored web development solutions that
-              elevate your online presence and drive business growth.
-            </span>
-            <div className="visit">
-              <svg
-                width="17"
-                height="17"
-                viewBox="0 0 17 17"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M16.3211 1.92894C16.3211 1.23858 15.7614 0.67894 15.0711 0.67894H3.82109C3.13073 0.67894 2.57109 1.23858 2.57109 1.92894C2.57109 2.6193 3.13073 3.17894 3.82109 3.17894H13.8211V13.1789C13.8211 13.8693 14.3807 14.4289 15.0711 14.4289C15.7614 14.4289 16.3211 13.8693 16.3211 13.1789V1.92894ZM1.81284 16.955L15.955 2.81282L14.1872 1.04506L0.0450716 15.1872L1.81284 16.955Z"
-                  fill="black"
-                />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div className="card">
-          <div className="image">
-            <img
-              src="https://images.unsplash.com/photo-1604076984203-587c92ab2e58?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt=""
-            />
-          </div>
-          <div className="tag">Logo Designing</div>
-          <div className="info">
-            <span>
-              We specialize in crafting tailored web development solutions that
-              elevate your online presence and drive business growth.
-            </span>
-            <div className="visit">
-              <svg
-                width="17"
-                height="17"
-                viewBox="0 0 17 17"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M16.3211 1.92894C16.3211 1.23858 15.7614 0.67894 15.0711 0.67894H3.82109C3.13073 0.67894 2.57109 1.23858 2.57109 1.92894C2.57109 2.6193 3.13073 3.17894 3.82109 3.17894H13.8211V13.1789C13.8211 13.8693 14.3807 14.4289 15.0711 14.4289C15.7614 14.4289 16.3211 13.8693 16.3211 13.1789V1.92894ZM1.81284 16.955L15.955 2.81282L14.1872 1.04506L0.0450716 15.1872L1.81284 16.955Z"
-                  fill="black"
-                />
-              </svg>
-            </div>
-          </div>
-        </div>
+        ))}
       </HorizontalWrapper>
     </Container>
   );
