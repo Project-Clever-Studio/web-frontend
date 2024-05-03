@@ -52,6 +52,7 @@ const HorizontalWrapper = styled.div`
 
     .image {
       opacity: 0.3;
+      filter: blur(5px);
       height: 100%;
       width: 100%;
       position: absolute;
@@ -73,6 +74,9 @@ const HorizontalWrapper = styled.div`
       width: fit-content;
       background-color: #fff;
       border-radius: 20px;
+      font-family: "Mona Sans";
+      font-size: 0.9rem;
+      font-weight: 500;
     }
 
     .info {
@@ -80,9 +84,12 @@ const HorizontalWrapper = styled.div`
       display: flex;
       flex-direction: column;
       gap: 1rem;
-      width: 90%;
+      width: 95%;
       span {
-        line-height: 1.3;
+        font-family: "Mona Sans";
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.4;
       }
 
       .visit {
@@ -105,6 +112,7 @@ const HorizontalWrapper = styled.div`
 
     &:hover {
       .image {
+        filter: none;
         opacity: 1;
       }
       .visit {
@@ -124,13 +132,13 @@ const Services = () => {
 
   useGSAP(() => {
     gsap.to(horizontalSection.current, {
-      duration: 0.1,
+      ease: "none",
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top -10%",
         pin: true,
-        scrub: 0.01,
-        end: "+=1500px",
+        scrub: 0.6,
+        end: "+=1000px",
       },
       x: -(horizontalSection.current.offsetWidth - window.innerWidth),
     });
@@ -156,7 +164,7 @@ const Services = () => {
               alt=""
             />
           </div>
-          <div className="tag">Web Dev.</div>
+          <div className="tag">Product shoot</div>
           <div className="info">
             <span>
               We specialize in crafting tailored web development solutions that
@@ -185,7 +193,7 @@ const Services = () => {
               alt=""
             />
           </div>
-          <div className="tag">App Dev.</div>
+          <div className="tag">Event shoot</div>
           <div className="info">
             <span>
               We specialize in crafting tailored web development solutions that
@@ -210,11 +218,11 @@ const Services = () => {
         <div className="card">
           <div className="image">
             <img
-              src="https://images.unsplash.com/photo-1604076913837-52ab5629fba9?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              src="https://images.unsplash.com/photo-1604077350837-c7f82f28653f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt=""
             />
           </div>
-          <div className="tag">Backend Dev.</div>
+          <div className="tag">Reels shoot</div>
           <div className="info">
             <span>
               We specialize in crafting tailored web development solutions that
@@ -239,11 +247,11 @@ const Services = () => {
         <div className="card">
           <div className="image">
             <img
-              src="https://images.unsplash.com/photo-1604076913837-52ab5629fba9?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              src="https://images.unsplash.com/photo-1604076850742-4c7221f3101b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt=""
             />
           </div>
-          <div className="tag">Backend Dev.</div>
+          <div className="tag">Smart contract</div>
           <div className="info">
             <span>
               We specialize in crafting tailored web development solutions that
@@ -268,11 +276,11 @@ const Services = () => {
         <div className="card">
           <div className="image">
             <img
-              src="https://images.unsplash.com/photo-1604076913837-52ab5629fba9?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              src="https://images.unsplash.com/photo-1569982175971-d92b01cf8694?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt=""
             />
           </div>
-          <div className="tag">Backend Dev.</div>
+          <div className="tag">NFT Creation</div>
           <div className="info">
             <span>
               We specialize in crafting tailored web development solutions that
@@ -297,11 +305,11 @@ const Services = () => {
         <div className="card">
           <div className="image">
             <img
-              src="https://images.unsplash.com/photo-1604076913837-52ab5629fba9?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              src="https://images.unsplash.com/photo-1604076984203-587c92ab2e58?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt=""
             />
           </div>
-          <div className="tag">Backend Dev.</div>
+          <div className="tag">Logo Designing</div>
           <div className="info">
             <span>
               We specialize in crafting tailored web development solutions that
