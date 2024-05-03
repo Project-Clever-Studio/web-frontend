@@ -150,6 +150,7 @@ const ShowReel = styled.div`
     transform-origin: unset;
     height: fit-content;
     transform: none !important;
+    scale: 1;
     .videoWrapper {
       display: block;
     }
