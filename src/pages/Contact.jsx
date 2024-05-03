@@ -5,10 +5,27 @@ import styled from "styled-components";
 const Contact = () => {
   const Container = styled.div`
     padding: 10rem 8rem;
+
+    @media (max-width: 1024px) {
+      padding: 8rem 4rem;
+    }
+
+    @media (max-width: 768px) {
+      padding: 8rem 2rem;
+    }
+
+    @media (max-width: 568px) {
+      padding: 7rem 1rem;
+    }
   `;
 
   const ContactWrapper = styled.div`
     display: flex;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 2rem;
+    }
   `;
 
   const InfoSection = styled.div`
@@ -61,6 +78,42 @@ const Contact = () => {
         }
       }
     }
+
+    @media (max-width: 1024px) {
+      h1 {
+        font-size: 5rem;
+      }
+
+      p {
+        width: 60%;
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 900px) {
+      h1 {
+        font-size: 4rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      gap: 3rem;
+      width: 100%;
+
+      p {
+        width: 50%;
+      }
+    }
+
+    @media (max-width: 400px) {
+      h1 {
+        font-size: 3.5rem;
+      }
+
+      p {
+        width: 100%;
+      }
+    }
   `;
 
   const FormSection = styled.div`
@@ -72,8 +125,11 @@ const Contact = () => {
     .formHeader {
       margin-top: 3dvh;
       display: flex;
-      align-items: center;
       gap: 1.5rem;
+
+      svg {
+        width: 2.5rem;
+      }
 
       span {
         font-size: 3rem;
@@ -111,6 +167,7 @@ const Contact = () => {
 
           input,
           textarea {
+            width: 100%;
             font-family: "Mona Sans";
             font-size: 1rem;
             font-weight: 400;
@@ -140,6 +197,29 @@ const Contact = () => {
 
         svg {
           margin-top: -2px;
+        }
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .formHeader {
+        svg {
+          display: none;
+        }
+      }
+    }
+    @media (max-width: 900px) {
+      .formHeader {
+        span {
+          font-size: 2.5rem;
+        }
+      }
+    }
+    @media (max-width: 768px) {
+      width: 100%;
+      .formHeader {
+        span {
+          font-size: 2.5rem;
         }
       }
     }
@@ -178,8 +258,6 @@ const Contact = () => {
           <FormSection>
             <div className="formHeader">
               <svg
-                width="50"
-                height="40"
                 viewBox="0 0 32 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
