@@ -184,10 +184,11 @@ const PortfolioSection = () => {
                 setCursorSettings((prevSettings) => ({
                   ...prevSettings,
                   size: 2,
-                  color: "#000000",
+                  color: "#00000021",
                   border: "transparent",
                   text: "View",
                   isBlending: false,
+                  blur: true,
                 }))
               }
               onMouseLeave={() => {
@@ -198,6 +199,7 @@ const PortfolioSection = () => {
                   border: "#00000057",
                   text: "",
                   isBlending: true,
+                  blur: false,
                 }));
               }}
             >

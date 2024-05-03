@@ -37,80 +37,38 @@ const Cursor = () => {
 
   const {
     size: cursorSize,
-    isSticky: stickyCursor,
     color: cursorColor,
     isBlending: cursorBlending,
     text: cursorText,
     border: borderColor,
+    blur,
   } = cursorSettings;
-
-  //   const rotate = (distance) => {
-  //     const angle = Math.atan2(distance.y, distance.x);
-  //     gsap.to(cursorRef.current, {
-  //       rotation: angle + "rad",
-  //       duration: 0,
-  //     });
-  //   };
 
   useEffect(() => {
     const cursor = cursorRef.current;
 
     const handleMouseMove = (e) => {
       const { clientX, clientY } = e;
-      const { left, top, width, height } = bounds;
-      const center = { x: left + width / 2, y: top + height / 2 };
-      const distance = { x: clientX - center.x, y: clientY - center.y };
 
-      if (stickyCursor) {
-        // rotate(distance);
-        const absDistance = Math.max(
-          Math.abs(distance.x),
-          Math.abs(distance.y)
-        );
-        const newScaleX = gsap.utils.mapRange(
-          0,
-          width / 1,
-          cursorSize,
-          6,
-          absDistance
-        );
-        const newScaleY = gsap.utils.mapRange(
-          0,
-          height / 1,
-          cursorSize,
-          5,
-          absDistance
-        );
-        gsap.to(cursor, {
-          x: center.x - cursorSize / 1 + distance.x * 0.1,
-          y: center.y - cursorSize / 1 + distance.y * 0.1,
-          scaleX: newScaleX,
-          scaleY: newScaleY,
-          duration: 0.5,
-          ease: "power2.out",
-        });
-      } else {
-        gsap.to(cursor, {
-          // rotation: 0,
-          x: clientX - 20,
-          y: clientY - 20,
-          scale: cursorSize,
-          borderColor: borderColor,
-          backgroundColor: cursorColor,
-          mixBlendMode: cursorBlending ? "difference" : "normal",
-          duration: 0.5,
-          ease: "power2.out",
-        });
+      gsap.to(cursor, {
+        x: clientX - 20,
+        y: clientY - 20,
+        scale: cursorSize,
+        borderColor: borderColor,
+        backgroundColor: cursorColor,
+        mixBlendMode: cursorBlending ? "difference" : "normal",
+        duration: 0.5,
+        ease: "power2.out",
+      });
 
-        gsap.to(textRef.current, {
-          x: clientX - 15,
-          y: clientY - 10,
-          opacity: cursorText ? 1 : 0,
-          scale: cursorText ? 1 : 0,
-          duration: 0.44,
-          ease: "power2.out",
-        });
-      }
+      gsap.to(textRef.current, {
+        x: clientX - 15,
+        y: clientY - 10,
+        opacity: cursorText ? 1 : 0,
+        scale: cursorText ? 1 : 0,
+        duration: 0.44,
+        ease: "power2.out",
+      });
     };
 
     const handleMouseLeave = () => {
@@ -142,7 +100,10 @@ const Cursor = () => {
 
   return (
     <>
-      <CustomCursor ref={cursorRef}></CustomCursor>
+      <CustomCursor
+        style={{ backdropFilter: blur ? "blur(5px)" : "unset" }}
+        ref={cursorRef}
+      ></CustomCursor>
       <CursorText ref={textRef}>View</CursorText>
     </>
   );
