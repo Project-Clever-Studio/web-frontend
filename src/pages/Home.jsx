@@ -9,6 +9,7 @@ import Brands from "../components/Brands";
 import Services from "../components/Services";
 import About from "../components/Sections/home/About";
 import PortfolioSection from "../components/Sections/home/PortfolioSection";
+import { useContextProvider } from "../utils/GlobleContextProvider";
 
 const Container = styled.div``;
 
@@ -158,6 +159,7 @@ const ShowReel = styled.div`
 `;
 
 const Home = () => {
+  const { setCursorSettings } = useContextProvider();
   const showReelRef = useRef(null);
   const headerTextRef = useRef(null);
   const heroRef = useRef(null);
@@ -242,7 +244,31 @@ const Home = () => {
             </Content>
           </ContentWrapper>
           <ShowReel ref={showReelRef}>
-            <div className="videoWrapper">
+            <div
+              className="videoWrapper"
+              onMouseEnter={() =>
+                setCursorSettings((prevSettings) => ({
+                  ...prevSettings,
+                  size: 2,
+                  color: "#ffffff14",
+                  border: "transparent",
+                  text: "Watch Reel",
+                  isBlending: true,
+                  blur: true,
+                }))
+              }
+              onMouseLeave={() => {
+                setCursorSettings((prevSettings) => ({
+                  ...prevSettings,
+                  size: 1,
+                  color: "transparent",
+                  border: "#00000057",
+                  text: "",
+                  isBlending: true,
+                  blur: false,
+                }));
+              }}
+            >
               <video
                 src="https://video-previews.elements.envatousercontent.com/h264-video-previews/2aaa15f9-96db-4d86-8d47-cbc766cb8dfa/36822602.mp4"
                 muted
