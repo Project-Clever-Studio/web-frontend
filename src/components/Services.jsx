@@ -67,8 +67,8 @@ const HorizontalWrapper = styled.div`
     overflow: hidden;
 
     .image {
-      opacity: 0.3;
-      filter: blur(5px);
+      /* opacity: 0.3; */
+      /* filter: blur(5px); */
       height: 100%;
       width: 100%;
       position: absolute;
@@ -219,11 +219,11 @@ const Services = () => {
         <h2>
           <span>Our</span> <span>Services</span>
         </h2>
-        <p>
+        {/* <p>
           Clever Studio is your go-to destination for cutting-edge media
           services. Whether you're looking for branding, digital marketing, or
           creative content, we've got you covered.
-        </p>
+        </p> */}
       </Title>
       <HorizontalWrapper ref={horizontalSection}>
         {Cards.map((item, index) => (

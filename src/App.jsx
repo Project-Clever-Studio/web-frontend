@@ -17,6 +17,7 @@ import gsap from "gsap";
 import { AnimatePresence } from "framer-motion";
 import { useContextProvider } from "./utils/GlobleContextProvider";
 import Portfolio from "./pages/Portfolio";
+import Footer from "./components/Footer";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -82,6 +83,7 @@ function App() {
           <Route path="/portfolio" element={<Portfolio />} />
         </Routes>
       </AnimatePresence>
+      <Footer />
     </div>
   );
 }

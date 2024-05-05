@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { useContextProvider } from "../../../utils/GlobleContextProvider";
+import SplitType from "split-type";
+import gsap from "gsap";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   padding: 0 8rem;
@@ -19,6 +22,8 @@ const Title = styled.div`
   font-size: 7rem;
   font-weight: 600;
   text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
   span {
     display: block;
     line-height: 1;
@@ -134,6 +139,19 @@ const InfoWrapper = styled.div`
   }
 `;
 
+const Button = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 6rem;
+  a {
+    background-color: #151515;
+    color: #fff;
+    padding: 0.8rem 1.3rem;
+    border-radius: 2rem;
+  }
+`;
+
 const projects = [
   {
     name: "Tech Bucket",
@@ -142,8 +160,8 @@ const projects = [
     year: "2023",
   },
   {
-    name: "Project 2",
-    src: "https://made-byshape.transforms.svdcdn.com/production/uploads/images/workImages/Prestige-Drinks/Prestige-Header.jpg?w=1200&h=900&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1712823824&s=ec6be83ab13b40c97d58ed88965f0780",
+    name: "Demox Productions",
+    src: "https://res.cloudinary.com/dzsocqtuc/image/upload/v1712916071/demoxPoster_juxvm0.jpg",
     info: "Branding",
     year: "2023",
   },
@@ -159,20 +177,42 @@ const projects = [
     info: "Branding",
     year: "2023",
   },
-  {
-    name: "Project 5",
-    src: "https://made-byshape.transforms.svdcdn.com/production/uploads/images/workImages/Prestige-Drinks/Prestige-Header.jpg?w=1200&h=900&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1712823824&s=ec6be83ab13b40c97d58ed88965f0780",
-    info: "Branding",
-    year: "2023",
-  },
 ];
 
 const PortfolioSection = () => {
   const { setCursorSettings } = useContextProvider();
 
+  const titleRef = useRef(null);
+
+  useEffect(() => {
+    const splitTitle = SplitType.create(titleRef.current, {
+      types: "chars",
+    });
+
+    gsap.set(splitTitle.chars, {
+      opacity: 0,
+      filter: "blur(5px)",
+      y: 100,
+    });
+
+    gsap.to(splitTitle.chars, {
+      opacity: 1,
+      y: 0,
+      filter: "blur(0px)",
+      stagger: 0.02,
+      duration: 0.6,
+      delay: 0.3,
+      scrollTrigger: {
+        trigger: titleRef.current,
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      },
+    });
+  }, []);
+
   return (
     <Container>
-      <Title>
+      <Title ref={titleRef}>
         <span>Featured</span>
         <span>Projects</span>
       </Title>
@@ -214,6 +254,9 @@ const PortfolioSection = () => {
           </ProjectCard>
         ))}
       </ProjectWrapper>
+      <Button>
+        <Link to="/portfolio">View All Projects</Link>
+      </Button>
     </Container>
   );
 };

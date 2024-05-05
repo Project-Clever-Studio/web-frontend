@@ -10,6 +10,8 @@ import Services from "../components/Services";
 import About from "../components/Sections/home/About";
 import PortfolioSection from "../components/Sections/home/PortfolioSection";
 import { useContextProvider } from "../utils/GlobleContextProvider";
+import Marquee from "../components/Sections/Marquee";
+import Approch from "../components/Sections/home/Approch";
 
 const Container = styled.div``;
 
@@ -237,7 +239,8 @@ const Home = () => {
                   brand essence.
                 </p>
                 <span>
-                  Reach us <FaArrowRight />
+                  Reach us
+                  <FaArrowRight />
                 </span>
               </div>
             </Content>
@@ -280,6 +283,7 @@ const Home = () => {
         </Hero>
         <About />
         <PortfolioSection />
+        <Approch />
         <Services />
         <Brands />
       </Container>

@@ -146,7 +146,7 @@ const About = () => {
       <Content>
         <Button>
           <span>About Us</span>
-          <HiMiniArrowLongRight />
+          {/* <HiMiniArrowLongRight /> */}
         </Button>
         <Info>
           <p ref={infoRef}>
