@@ -179,7 +179,6 @@ const Home = () => {
         ease: "none",
         scrollTrigger: {
           trigger: showReelRef.current,
-          markers: true,
           start: "top 50%",
           end: "bottom 10%",
           scrub: 0.1,
