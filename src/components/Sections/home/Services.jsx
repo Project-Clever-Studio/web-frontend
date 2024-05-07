@@ -4,6 +4,9 @@ import { ScrollTrigger } from "gsap/all";
 import React, { useRef } from "react";
 import styled from "styled-components";
 
+import BG1 from "../../../assets/Images/bg1.png";
+import BG2 from "../../../assets/Images/bg2.png";
+
 const Conatiner = styled.div`
   display: flex;
   justify-content: space-between;
@@ -120,6 +123,7 @@ const servicesData = [
     name: "Product shoot",
     info: "Elevate your products with our expert Product Shoot service. From gadgets to gourmet, we capture it all with flair. Let our team showcase your offerings in the best light possible.",
     image: "https://deveb.co/static/media/vim.2c5e9ce4.jpg",
+    // image: BG1,
     url: "",
     backgroundColor: "#fdbbff",
   },
@@ -127,6 +131,8 @@ const servicesData = [
     name: "Web Development",
     info: "Transform your online presence with our Web Development service. We craft sleek, user-friendly websites tailored to your brand. From design to deployment, we ensure your site stands out and delivers a seamless experience for your visitors.",
     image: "https://deveb.co/static/media/dopop2.3974e9e7.jpg",
+    // image: BG2,
+
     url: "",
     backgroundColor: "#bcbbff",
   },

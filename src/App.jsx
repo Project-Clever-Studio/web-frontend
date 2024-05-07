@@ -30,6 +30,7 @@ function App() {
     const locomotiveScroll = new LocomotiveScroll({
       lenisOptions: {
         smoothTouch: false,
+        autoResize: true,
       },
     });
 

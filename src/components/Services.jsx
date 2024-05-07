@@ -3,6 +3,10 @@ import gsap from "gsap";
 import React, { useRef } from "react";
 import styled from "styled-components";
 
+import BG1 from "../assets/Images/bg1.png";
+import BG2 from "../assets/Images/bg2.png";
+import BG3 from "../assets/Images/bg3.png";
+
 const Container = styled.div`
   padding-top: 10rem;
   overflow: hidden;
@@ -152,20 +156,23 @@ const HorizontalWrapper = styled.div`
 
 const Cards = [
   {
-    image:
-      "https://images.unsplash.com/photo-1579567761406-4684ee0c75b6?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    // image:
+    //   "https://images.unsplash.com/photo-1579567761406-4684ee0c75b6?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: BG1,
     service: "Web Dev",
     info: "We specialize in crafting tailored web development solutions that elevate your online presence and drive business growth.",
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1613575998061-0f59337425f2?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    // image:
+    //   "https://images.unsplash.com/photo-1613575998061-0f59337425f2?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: BG2,
     service: "App Dev",
     info: "We specialize in crafting tailored web development solutions that elevate your online presence and drive business growth.",
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1604076913837-52ab5629fba9?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    // image:
+    //   "https://images.unsplash.com/photo-1604076913837-52ab5629fba9?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: BG3,
     service: "Backend Dev",
     info: "We specialize in crafting tailored web development solutions that elevate your online presence and drive business growth.",
   },

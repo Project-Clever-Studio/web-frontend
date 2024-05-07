@@ -96,7 +96,7 @@ const Approch = () => {
       y: 0,
       filter: "blur(0px)",
       duration: 1.5,
-      stagger: 0.2,
+      stagger: 0.3,
       ease: "expo.out",
       scrollTrigger: {
         trigger: contentRef.current,
