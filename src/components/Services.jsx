@@ -72,9 +72,6 @@ const HorizontalWrapper = styled.div`
     transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 
     .image {
-      /* opacity: 0.3; */
-      /* filter: blur(5px); */
-
       height: 100%;
       width: 100%;
       position: absolute;
@@ -195,18 +192,15 @@ const Services = () => {
       defaults: {
         duration: 0.05,
         ease: "expo.out",
+        filter: "blur(0)",
+        scale: 1,
       },
     });
-    if (!id) {
-      tl.to(cardsRef.current, {
-        opacity: 1,
-        scale: 1,
-      });
-      return;
-    } else {
+
+    if (id !== null) {
       tl.to(cardsRef.current, {
         opacity: 0.7,
-        scale: 1,
+        filter: "blur(2px)",
       }).to(
         cardsRef.current[id],
         {
@@ -215,6 +209,10 @@ const Services = () => {
         },
         "-=0.05"
       );
+    } else {
+      tl.to(cardsRef.current, {
+        opacity: 1,
+      });
     }
   };
 
