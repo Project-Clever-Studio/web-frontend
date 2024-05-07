@@ -191,30 +191,30 @@ const Services = () => {
   });
 
   const animateCards = (id) => {
-    // const tl = gsap.timeline({
-    //   defaults: {},
-    // });
+    const tl = gsap.timeline({
+      defaults: {
+        duration: 0.05,
+        ease: "expo.out",
+      },
+    });
     if (!id) {
-      gsap.to(cardsRef.current, {
+      tl.to(cardsRef.current, {
         opacity: 1,
         scale: 1,
-        duration: 0.05,
-        ease: "expo.inOut",
       });
       return;
     } else {
-      gsap.to(cardsRef.current, {
-        opacity: 0.5,
+      tl.to(cardsRef.current, {
+        opacity: 0.7,
         scale: 1,
-        duration: 0.05,
-        ease: "expo.inOut",
-      });
-      gsap.to(cardsRef.current[id], {
-        opacity: 1,
-        scale: 1.025,
-        duration: 0.05,
-        ease: "expo.inOut",
-      });
+      }).to(
+        cardsRef.current[id],
+        {
+          opacity: 1,
+          scale: 1.025,
+        },
+        "-=0.05"
+      );
     }
   };
 
