@@ -1,6 +1,6 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { FaArrowRight } from "react-icons/fa";
 import SplitType from "split-type";
@@ -161,14 +161,15 @@ const ShowReel = styled.div`
 `;
 
 const Home = () => {
-  const { setCursorSettings } = useContextProvider();
+  const { preloader } = useContextProvider();
   const showReelRef = useRef(null);
   const headerTextRef = useRef(null);
   const heroRef = useRef(null);
   const infoRef = useRef(null);
   const infoRef2 = useRef(null);
+  const videoRef = useRef(null);
 
-  useGSAP(() => {
+  useEffect(() => {
     const headerTextSplit = SplitType.create(headerTextRef.current);
     const infoSplit = SplitType.create(infoRef.current);
     const infoSplit2 = SplitType.create(infoRef2.current);
@@ -200,34 +201,48 @@ const Home = () => {
       });
     });
 
-    homeTl.set(headerTextSplit.chars, {
-      yPercent: 100,
-    });
+    homeTl
+      .set(headerTextSplit.chars, {
+        yPercent: 100,
+      })
+      .set(elements, {
+        y: 100,
+        opacity: 0,
+      })
+      .set(showReelRef.current, {
+        y: 150,
+        opacity: 0,
+      });
 
-    homeTl.set(elements, {
-      y: 100,
-      opacity: 0,
-    });
-
-    homeTl.to(headerTextSplit.chars, {
-      yPercent: 0,
-      duration: 0.75,
-      stagger: 0.02,
-      ease: "power4.Out",
-    });
-
-    homeTl.to(
-      elements,
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        stagger: 0.05,
-        ease: "power.inOut",
-      },
-      "<.4"
-    );
-  });
+    if (!preloader) {
+      homeTl
+        .to(headerTextSplit.chars, {
+          yPercent: 0,
+          duration: 0.75,
+          stagger: 0.02,
+          ease: "power4.Out",
+        })
+        .to(
+          elements,
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            stagger: 0.05,
+            ease: "power.inOut",
+          },
+          "<.4"
+        )
+        .to(
+          showReelRef.current,
+          {
+            y: 0,
+            opacity: 1,
+          },
+          "<.2"
+        );
+    }
+  }, [preloader]);
 
   return (
     <RouteTransition>
@@ -281,6 +296,7 @@ const Home = () => {
               }}
             >
               <video
+                ref={videoRef}
                 src="https://video-previews.elements.envatousercontent.com/h264-video-previews/2aaa15f9-96db-4d86-8d47-cbc766cb8dfa/36822602.mp4"
                 muted
                 autoPlay

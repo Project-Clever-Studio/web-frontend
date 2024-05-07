@@ -20,6 +20,7 @@ import Cursor from "./components/CustomCursor";
 
 //Css
 import "./App.scss";
+import Preloader from "./components/Preloader";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -78,6 +79,7 @@ function App() {
     <div ref={AppRef}>
       <Cursor />
       <Navbar />
+      <Preloader />
       <AnimatePresence initial={false} mode={"wait"}>
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />

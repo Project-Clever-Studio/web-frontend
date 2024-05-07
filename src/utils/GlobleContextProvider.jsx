@@ -4,6 +4,7 @@ const GlobalContext = createContext();
 
 export const ContextProvider = ({ children }) => {
   const [locoScroll, setLocoScroll] = useState(null);
+  const [preloader, setPreloader] = useState(true);
   const [cursorSettings, setCursorSettings] = useState({
     size: 1,
     color: "transparent",
@@ -16,6 +17,8 @@ export const ContextProvider = ({ children }) => {
   return (
     <GlobalContext.Provider
       value={{
+        preloader,
+        setPreloader,
         locoScroll,
         setLocoScroll,
         setCursorSettings,
