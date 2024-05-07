@@ -10,7 +10,7 @@ import Services from "../components/Services";
 import About from "../components/Sections/home/About";
 import PortfolioSection from "../components/Sections/home/PortfolioSection";
 import { useContextProvider } from "../utils/GlobleContextProvider";
-import Marquee from "../components/Sections/Marquee";
+import Marquee from "../components/Marquee";
 import Approch from "../components/Sections/home/Approch";
 
 const Container = styled.div``;
@@ -286,6 +286,7 @@ const Home = () => {
         <Approch />
         <Services />
         <Brands />
+        <Marquee />
       </Container>
     </RouteTransition>
   );
