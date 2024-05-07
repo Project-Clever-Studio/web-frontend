@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { ScrollTrigger } from "gsap/all";
 import React from "react";
 import styled from "styled-components";
 
@@ -95,6 +96,7 @@ const RouteTransition = ({ children }) => {
         }}
         animate={{
           y: 0,
+          transitionEnd: () => ScrollTrigger.refresh(),
         }}
         exit={{
           y: -150,

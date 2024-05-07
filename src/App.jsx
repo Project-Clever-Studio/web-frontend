@@ -3,21 +3,23 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import LocomotiveScroll from "locomotive-scroll";
 import { ScrollTrigger } from "gsap/all";
 import { useGSAP } from "@gsap/react";
+import { AnimatePresence } from "framer-motion";
+import { useContextProvider } from "./utils/GlobleContextProvider";
+import gsap from "gsap";
 
 //Pages
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 
-//Css
-import "./App.scss";
-import Navbar from "./components/Navbar";
-import Cursor from "./components/CustomCursor";
-import gsap from "gsap";
-import { AnimatePresence } from "framer-motion";
-import { useContextProvider } from "./utils/GlobleContextProvider";
+// Components
 import Portfolio from "./pages/Portfolio";
 import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
+import Cursor from "./components/CustomCursor";
+
+//Css
+import "./App.scss";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
