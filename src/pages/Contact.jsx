@@ -4,14 +4,12 @@ import styled from "styled-components";
 
 const Contact = () => {
   const Container = styled.div`
-    padding: 10rem 8rem;
-
-    @media (max-width: 1024px) {
-      padding: 8rem 4rem;
-    }
+    height: 100dvh;
+    padding: 7rem;
+    padding-bottom: 0;
 
     @media (max-width: 768px) {
-      padding: 8rem 2rem;
+      padding: 5rem 2rem;
     }
 
     @media (max-width: 568px) {
@@ -21,6 +19,7 @@ const Contact = () => {
 
   const ContactWrapper = styled.div`
     display: flex;
+    /* align-items: flex-end; */
 
     @media (max-width: 768px) {
       flex-direction: column;
@@ -38,8 +37,8 @@ const Contact = () => {
       display: flex;
       flex-direction: column;
       font-family: "Mona Sans";
-      font-weight: 700;
-      font-size: 6vw;
+      font-weight: 800;
+      font-size: 5vw;
 
       span {
         line-height: 1;
@@ -48,7 +47,7 @@ const Contact = () => {
     p {
       width: 50%;
       font-family: "Mona Sans";
-      font-weight: 500;
+      font-weight: 400;
       font-size: 2rem;
     }
 
@@ -60,7 +59,7 @@ const Contact = () => {
       .social {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 0.6rem;
         span {
           opacity: 0.5;
           font-size: 1.2rem;
@@ -71,6 +70,7 @@ const Contact = () => {
           font-size: 1.2rem;
         }
         a {
+          margin-top: 0.5rem;
           text-decoration: underline;
           text-underline-offset: 0.4rem;
           color: #000;
@@ -119,11 +119,10 @@ const Contact = () => {
   const FormSection = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    gap: 3rem;
     width: 50%;
 
     .formHeader {
-      margin-top: 3dvh;
       display: flex;
       gap: 1.5rem;
 
@@ -231,8 +230,8 @@ const Contact = () => {
         <ContactWrapper>
           <InfoSection>
             <h1>
-              <span>Let's get</span>
-              <span>in touch</span>
+              <span>CONNECT</span>
+              <span>WITH US</span>
             </h1>
             <p>Reach out to us for innovative solutions.</p>
             <div className="socials">
@@ -319,7 +318,7 @@ const Contact = () => {
               <div className="singleInput">
                 <div className="input">
                   <span>Additional details</span>
-                  <textarea rows={6} name="name" />
+                  <textarea rows={5} name="name" />
                 </div>
               </div>
               <div className="submit">
