@@ -10,7 +10,6 @@ import Services from "../components/Services";
 import About from "../components/Sections/home/About";
 import PortfolioSection from "../components/Sections/home/PortfolioSection";
 import { useContextProvider } from "../utils/GlobleContextProvider";
-import Marquee from "../components/Sections/Marquee";
 import Approch from "../components/Sections/home/Approch";
 
 const Container = styled.div``;
@@ -166,12 +165,16 @@ const Home = () => {
   const headerTextRef = useRef(null);
   const heroRef = useRef(null);
   const infoRef = useRef(null);
+  const infoRef2 = useRef(null);
 
   useGSAP(() => {
     const headerTextSplit = SplitType.create(headerTextRef.current);
     const infoSplit = SplitType.create(infoRef.current);
+    const infoSplit2 = SplitType.create(infoRef2.current);
 
     let mm = gsap.matchMedia();
+    const homeTl = gsap.timeline();
+    const elements = gsap.utils.toArray([infoSplit.lines, infoSplit2.lines]);
 
     mm.add("(min-width: 1080px)", () => {
       gsap.to(showReelRef.current, {
@@ -196,28 +199,33 @@ const Home = () => {
       });
     });
 
-    gsap.set(headerTextSplit.chars, {
+    homeTl.set(headerTextSplit.chars, {
       yPercent: 100,
     });
 
-    gsap.set(infoSplit.words, {
+    homeTl.set(elements, {
+      y: 100,
       opacity: 0,
     });
 
-    gsap.to(headerTextSplit.chars, {
+    homeTl.to(headerTextSplit.chars, {
       yPercent: 0,
       duration: 0.75,
       stagger: 0.02,
       ease: "power4.Out",
     });
 
-    gsap.to(infoSplit.words, {
-      opacity: 1,
-      delay: 0.3,
-      duration: 1,
-      stagger: 0.01,
-      ease: "power4.Out",
-    });
+    homeTl.to(
+      elements,
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        stagger: 0.05,
+        ease: "power.inOut",
+      },
+      "<.4"
+    );
   });
 
   return (
@@ -227,12 +235,12 @@ const Home = () => {
           <ContentWrapper>
             <HeaderText ref={headerTextRef}>Clever Studio</HeaderText>
             <Content>
-              <div className="info" ref={infoRef}>
-                <h2>
+              <div className="info">
+                <h2 ref={infoRef}>
                   Clever Studio, your one-stop destination for cutting-edge
                   creative media solutions.
                 </h2>
-                <p>
+                <p ref={infoRef2}>
                   Our team of talented designers, developers, and branding
                   experts work tirelessly to bring your vision to life. Whether
                   you're looking to create a stunning website that captures your

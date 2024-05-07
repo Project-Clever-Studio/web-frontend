@@ -4,9 +4,6 @@ import { ScrollTrigger } from "gsap/all";
 import React, { useRef } from "react";
 import styled from "styled-components";
 
-import BG1 from "../../../assets/Images/bg1.png";
-import BG2 from "../../../assets/Images/bg2.png";
-
 const Conatiner = styled.div`
   display: flex;
   justify-content: space-between;

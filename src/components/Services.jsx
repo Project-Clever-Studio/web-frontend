@@ -30,11 +30,6 @@ const Title = styled.div`
       display: block;
     }
   }
-  p {
-    width: 35%;
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-  }
   @media (max-width: 768px) {
     flex-direction: column;
     justify-content: flex-start;
@@ -42,11 +37,6 @@ const Title = styled.div`
     padding: 0;
     h2 {
       font-size: 2.8rem;
-    }
-    p {
-      width: 100%;
-      margin-top: 1rem;
-      font-size: 1rem;
     }
   }
 `;
@@ -125,22 +115,16 @@ const HorizontalWrapper = styled.div`
 
 const Cards = [
   {
-    // image:
-    //   "https://images.unsplash.com/photo-1579567761406-4684ee0c75b6?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     image: BG1,
     service: "Web Dev",
     info: "We specialize in crafting tailored web development solutions that elevate your online presence and drive business growth.",
   },
   {
-    // image:
-    //   "https://images.unsplash.com/photo-1613575998061-0f59337425f2?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     image: BG2,
     service: "App Dev",
     info: "We specialize in crafting tailored web development solutions that elevate your online presence and drive business growth.",
   },
   {
-    // image:
-    //   "https://images.unsplash.com/photo-1604076913837-52ab5629fba9?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     image: BG3,
     service: "Backend Dev",
     info: "We specialize in crafting tailored web development solutions that elevate your online presence and drive business growth.",
@@ -222,11 +206,6 @@ const Services = () => {
         <h2>
           <span>Our</span> <span>Services</span>
         </h2>
-        {/* <p>
-          Clever Studio is your go-to destination for cutting-edge media
-          services. Whether you're looking for branding, digital marketing, or
-          creative content, we've got you covered.
-        </p> */}
       </Title>
       <HorizontalWrapper ref={horizontalSection}>
         {Cards.map((item, index) => (
