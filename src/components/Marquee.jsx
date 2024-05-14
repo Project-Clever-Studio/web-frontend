@@ -53,7 +53,6 @@ const MarqueeContainer = styled.div`
   position: relative;
   width: 100%;
   height: max-content;
-  background-color: #fff;
   margin-bottom: 6rem;
   @media (max-width: 768px) {
     height: 5rem;

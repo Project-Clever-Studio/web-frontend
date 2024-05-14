@@ -79,7 +79,7 @@ function App() {
     <div ref={AppRef}>
       <Cursor />
       <Navbar />
-      <Preloader />
+      {/* <Preloader /> */}
       <AnimatePresence initial={false} mode={"wait"}>
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />

@@ -4,7 +4,7 @@ const GlobalContext = createContext();
 
 export const ContextProvider = ({ children }) => {
   const [locoScroll, setLocoScroll] = useState(null);
-  const [preloader, setPreloader] = useState(true);
+  const [preloader, setPreloader] = useState(false);
   const [cursorSettings, setCursorSettings] = useState({
     size: 1,
     color: "transparent",
