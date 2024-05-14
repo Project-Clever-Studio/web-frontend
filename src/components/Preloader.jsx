@@ -64,51 +64,30 @@ const Loader = styled.div`
 
 const Preloader = () => {
   const { setPreloader } = useContextProvider();
-  const loaderRef = useRef(null);
   const containerRef = useRef(null);
   const vidRef = useRef(null);
 
   useEffect(() => {
-    const tl = gsap.timeline();
+    setTimeout(() => {
+      vidRef.current.play();
 
-    tl.to(loaderRef.current.querySelector(".loader_bar"), {
-      width: "100%",
-      duration: 5,
-      ease: "power2.inOut",
-      onUpdate: function () {
-        if (tl.progress() >= 0.55) {
-          vidRef.current.play();
-        }
-      },
-    })
-      .to(
-        loaderRef.current,
-        {
-          opacity: 0,
-        },
-        "-=.5"
-      )
-      .to(vidRef.current, {
-        delay: 2,
-        opacity: 0,
-      })
-      .to(containerRef.current, {
+      gsap.to(containerRef.current, {
         yPercent: -100,
         duration: 0.5,
+        delay: 2,
         ease: "power2.inOut",
         onUpdate: function () {
-          if (tl.progress() >= 0.95) {
+          var progress = this.progress();
+          if (progress >= 0.5) {
             setPreloader(false);
           }
         },
       });
+    }, 2000);
   }, []);
 
   return (
     <Container ref={containerRef}>
-      <Loader ref={loaderRef}>
-        <div className="loader_bar"></div>
-      </Loader>
       <video ref={vidRef} src={LogoAni} muted></video>
     </Container>
   );

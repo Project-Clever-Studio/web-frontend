@@ -187,6 +187,7 @@ const Home = () => {
           start: "top 50%",
           end: "bottom 10%",
           scrub: 0.1,
+          markers: true,
         },
       });
 
@@ -210,7 +211,7 @@ const Home = () => {
         opacity: 0,
       })
       .set(showReelRef.current, {
-        y: 150,
+        x: 150,
         opacity: 0,
       });
 
@@ -231,15 +232,15 @@ const Home = () => {
             stagger: 0.05,
             ease: "power.inOut",
           },
-          "<.4"
+          "<.1"
         )
         .to(
           showReelRef.current,
           {
-            y: 0,
+            x: 0,
             opacity: 1,
           },
-          "<.2"
+          "<.1"
         );
     }
   }, [preloader]);
