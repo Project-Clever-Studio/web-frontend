@@ -41,7 +41,12 @@ const Title = styled.div`
     display: grid;
     gap: 1rem;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    .title {
+      text-align: left;
+      grid-column: 4;
+    }
     .btn {
+      text-transform: capitalize;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -207,6 +212,17 @@ const projects = [
 const PortfolioMain = () => {
   const { setCursorSettings } = useContextProvider();
 
+  const categories = [
+    "Web",
+    "App",
+    "Video Edits",
+    "Logos",
+    "3d / 2d",
+    "Gfx / Vfx",
+    "Marketing",
+    "Contract",
+  ];
+
   const [activeCategory, setActiveCategory] = useState(-1);
 
   const titleRef = useRef(null);
@@ -248,54 +264,21 @@ const PortfolioMain = () => {
           <span>Ventures</span>
         </div>
         <div className="sort">
-          <div
-            className={`btn ${activeCategory == 1 ? "active" : ""}`}
-            onClick={() => setActiveCategory(1)}
-          >
-            WEB
-          </div>
-          <div
-            className={`btn ${activeCategory == 2 ? "active" : ""}`}
-            onClick={() => setActiveCategory(2)}
-          >
-            APP
-          </div>
-          <div
-            className={`btn ${activeCategory == 3 ? "active" : ""}`}
-            onClick={() => setActiveCategory(3)}
-          >
-            VIDEO EDITS
-          </div>
-          <div
-            className={`btn ${activeCategory == 4 ? "active" : ""}`}
-            onClick={() => setActiveCategory(4)}
-          >
-            LOGOS
-          </div>
-          <div
-            className={`btn ${activeCategory == 5 ? "active" : ""}`}
-            onClick={() => setActiveCategory(5)}
-          >
-            3D / 2D
-          </div>
-          <div
-            className={`btn ${activeCategory == 6 ? "active" : ""}`}
-            onClick={() => setActiveCategory(6)}
-          >
-            GFX / VFX
-          </div>
-          <div
-            className={`btn ${activeCategory == 7 ? "active" : ""}`}
-            onClick={() => setActiveCategory(7)}
-          >
-            MARKETING
-          </div>
-          <div
-            className={`btn ${activeCategory == 8 ? "active" : ""}`}
-            onClick={() => setActiveCategory(8)}
-          >
-            CONTRACT
-          </div>
+          <div className="title">Sort by category</div>
+          {categories.map((category, index) => (
+            <div
+              className={`btn ${activeCategory == index ? "active" : ""}`}
+              onClick={() => {
+                if (activeCategory == index) {
+                  setActiveCategory(-1);
+                  return;
+                }
+                setActiveCategory(index);
+              }}
+            >
+              {category}
+            </div>
+          ))}
         </div>
       </Title>
       <ProjectWrapper>

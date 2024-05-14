@@ -11,6 +11,7 @@ import {
   FaGithub,
   FaXTwitter,
 } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   height: 70vh;
@@ -25,6 +26,7 @@ const Container = styled.div`
     position: absolute;
     left: 0;
     bottom: 12%;
+    user-select: none;
     span {
       font-size: 13vw;
       /* color: #ffff; */
@@ -84,15 +86,25 @@ const Content = styled.div`
   justify-content: space-between;
 
   .items {
+    z-index: 40;
     ul {
       li {
         padding: 0.6rem 0;
         list-style: none;
+        opacity: 1;
+        transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 
         a {
           font-size: 1.4rem;
           text-decoration: none;
           color: #fff;
+        }
+      }
+      &:hover {
+        li {
+          &:is(:not(:hover)) {
+            opacity: 0.5;
+          }
         }
       }
     }
@@ -136,12 +148,11 @@ const Footer = () => {
       {
         yPercent: 8,
         stagger: 0.05,
-        ease: "expo.out",
+        ease: "power4.out",
         scrollTrigger: {
           trigger: splitType.chars,
           start: "top bottom",
           end: "50% 93%",
-          // markers: true,
           scrub: 0.5,
         },
       }
@@ -154,38 +165,38 @@ const Footer = () => {
         <div className="items">
           <ul>
             <li>
-              <a href="">Home</a>
+              <Link href="/">Home</Link>
             </li>
             <li>
-              <a href="">Portfolio</a>
+              <Link href="/portfolio">Portfolio</Link>
             </li>
             <li>
-              <a href="">About</a>
+              <Link href="/aboutus">About</Link>
             </li>
             <li>
-              <a href="">Our team</a>
+              <Link href="/ourteam">Our team</Link>
             </li>
             <li>
-              <a href="">Contact</a>
+              <Link href="/contact">Contact</Link>
             </li>
           </ul>
         </div>
         <div className="items">
           <ul>
             <li>
-              <a href="">Approach</a>
+              <Link href="">Approach</Link>
             </li>
             <li>
-              <a href="">Services</a>
+              <Link href="/services">Services</Link>
             </li>
             <li>
-              <a href="">Clients</a>
+              <Link href="">Clients</Link>
             </li>
             <li>
-              <a href="">Showreel</a>
+              <Link href="">Showreel</Link>
             </li>
             <li>
-              <a href="">Careers</a>
+              <Link href="">Careers</Link>
             </li>
           </ul>
         </div>

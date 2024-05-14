@@ -75,6 +75,7 @@ const Contact = () => {
           text-underline-offset: 0.4rem;
           color: #000;
           font-size: 1.2rem;
+          font-weight: 500;
         }
       }
     }
