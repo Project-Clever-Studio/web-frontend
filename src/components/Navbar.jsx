@@ -33,7 +33,6 @@ const Logo = styled(Link)`
 const MenuBtn = styled.div`
   height: 40px;
   width: 6rem;
-  background-color: red;
   border-radius: 1.6rem;
   color: #fff;
   overflow: hidden;
