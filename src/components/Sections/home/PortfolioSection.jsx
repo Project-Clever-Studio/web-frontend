@@ -6,7 +6,7 @@ import gsap from "gsap";
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
-  padding: 0 8rem;
+  padding: 0 3rem;
   padding-top: 10rem;
   @media (max-width: 1080px) {
     padding: 0 2rem;
@@ -181,7 +181,7 @@ const projects = [
 
 const PortfolioSection = () => {
   const { setCursorSettings } = useContextProvider();
-
+  const imageRef = useRef([]);
   const titleRef = useRef(null);
 
   useEffect(() => {
@@ -207,6 +207,25 @@ const PortfolioSection = () => {
         start: "top 80%",
         toggleActions: "play none none reverse",
       },
+    });
+
+    imageRef.current.forEach((element, i) => {
+      console.log(element, i);
+      gsap.set(element, {
+        filter: "blur(10px)",
+        scale: 1.1,
+      });
+
+      gsap.to(element, {
+        filter: "blur(0px)",
+        scale: 1,
+        duration: 1,
+        scrollTrigger: {
+          trigger: element,
+          start: "top 80%",
+          toggleActions: "play none none reverse",
+        },
+      });
     });
   }, []);
 
@@ -243,7 +262,11 @@ const PortfolioSection = () => {
                 }));
               }}
             >
-              <img src={item.src} alt="" />
+              <img
+                ref={(element) => (imageRef.current[index] = element)}
+                src={item.src}
+                alt=""
+              />
             </ImageWrapper>
             <InfoWrapper>
               <div className="info">

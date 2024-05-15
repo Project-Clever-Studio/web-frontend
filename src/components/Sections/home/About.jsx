@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { HiMiniArrowLongRight } from "react-icons/hi2";
 
 const Container = styled.div`
-  padding: 10rem 8rem;
+  padding: 10rem 3rem;
   padding-bottom: 5rem;
   @media (max-width: 1080px) {
     padding: 5rem 2rem;

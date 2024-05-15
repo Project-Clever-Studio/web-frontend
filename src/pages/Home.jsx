@@ -161,13 +161,20 @@ const ShowReel = styled.div`
 `;
 
 const Home = () => {
-  const { preloader } = useContextProvider();
+  const { setCursorSettings, preloader } = useContextProvider();
   const showReelRef = useRef(null);
   const headerTextRef = useRef(null);
   const heroRef = useRef(null);
   const infoRef = useRef(null);
   const infoRef2 = useRef(null);
   const videoRef = useRef(null);
+
+  // const fullScreen = () => {
+  //   gsap.to(showReelRef.current, {
+  //     scale: 1,
+  //     duration: 0.3,
+  //   });
+  // };
 
   useEffect(() => {
     const headerTextSplit = SplitType.create(headerTextRef.current);
@@ -187,7 +194,6 @@ const Home = () => {
           start: "top 50%",
           end: "bottom 10%",
           scrub: 0.1,
-          markers: true,
         },
       });
 
@@ -311,8 +317,8 @@ const Home = () => {
         <PortfolioSection />
         <Approch />
         <Services />
-        <Brands />
-        <Marquee />
+        {/* <Brands /> */}
+        {/* <Marquee /> */}
       </Container>
     </RouteTransition>
   );

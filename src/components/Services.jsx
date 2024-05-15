@@ -19,7 +19,7 @@ const Title = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  padding: 0 8rem;
+  padding: 0 3rem;
   margin-bottom: 3rem;
   h2 {
     font-size: 6rem;
@@ -45,7 +45,7 @@ const HorizontalWrapper = styled.div`
   width: max-content;
   display: flex;
   gap: 1rem;
-  padding: 0 8rem;
+  padding: 0 3rem;
 
   .card {
     opacity: 1;
@@ -158,16 +158,19 @@ const Services = () => {
   const cardsRef = useRef([]);
 
   useGSAP(() => {
-    gsap.to(horizontalSection.current, {
-      ease: "none",
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top -10%",
-        pin: true,
-        scrub: 0.6,
-        end: "+=1200px",
-      },
-      x: -(horizontalSection.current.offsetWidth - window.innerWidth),
+    let mm = gsap.matchMedia();
+    mm.add("(min-width: 1080px)", () => {
+      gsap.to(horizontalSection.current, {
+        ease: "none",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top -10%",
+          pin: true,
+          scrub: 0.6,
+          end: "+=1200px",
+        },
+        x: -(horizontalSection.current.offsetWidth - window.innerWidth),
+      });
     });
   });
 
