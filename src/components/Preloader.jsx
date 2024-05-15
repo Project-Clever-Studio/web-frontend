@@ -20,45 +20,13 @@ const Container = styled.div`
     width: 10rem;
   }
 
-  @media (max-width: 768px) {
-    .logo {
-      margin: 2rem 1.2rem;
-      font-size: 1rem;
-    }
-    .qoute {
-      max-width: 70%;
-      top: 70px;
-      left: 20px;
-      font-size: 1.5rem;
-    }
-    .loading {
-      left: 20px;
-    }
-    .counter {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      display: flex;
-      height: 80px;
-      font-size: 80px;
-    }
-  }
-`;
-
-const Loader = styled.div`
-  background-color: #ffffff39;
-  border-radius: 0.5rem;
-  height: 4px;
-  width: 30%;
-  position: absolute;
-  top: 56%;
-  left: 50%;
-  overflow: hidden;
-  transform: translateX(-50%);
-  .loader_bar {
-    width: 0%;
-    height: 100%;
-    background-color: #c5c5c5;
+  .preloader-info {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.9rem;
+    font-weight: 300;
   }
 `;
 
@@ -88,7 +56,8 @@ const Preloader = () => {
 
   return (
     <Container ref={containerRef}>
-      <video ref={vidRef} src={LogoAni} muted></video>
+      <video ref={vidRef} src={LogoAni} muted playsInline></video>
+      <p className="preloader-info">Website Under Development</p>
     </Container>
   );
 };

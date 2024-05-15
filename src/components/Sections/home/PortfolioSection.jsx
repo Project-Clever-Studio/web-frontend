@@ -5,6 +5,11 @@ import SplitType from "split-type";
 import gsap from "gsap";
 import { Link } from "react-router-dom";
 
+import Chemin from "../../../assets/portfolio/chemin.png";
+import TechBucket from "../../../assets/portfolio/techbucket.png";
+import BMPS from "../../../assets/portfolio/bmps.png";
+import interLude from "../../../assets/portfolio/interlude.png";
+
 const Container = styled.div`
   padding: 0 3rem;
   padding-top: 10rem;
@@ -155,28 +160,34 @@ const Button = styled.div`
 const projects = [
   {
     name: "Tech Bucket",
-    src: "https://res.cloudinary.com/dzsocqtuc/image/upload/v1714649196/MacBook_Air_-_2_xxhjko.png",
-    info: "Branding",
+    src: TechBucket,
+    info: "Web Development",
+    year: "2024",
+  },
+  {
+    name: "BMPS Lan Event",
+    src: BMPS,
+    info: "Video Shoot / Edit",
     year: "2023",
   },
   {
-    name: "Demox Productions",
-    src: "https://res.cloudinary.com/dzsocqtuc/image/upload/v1712916071/demoxPoster_juxvm0.jpg",
-    info: "Branding",
-    year: "2023",
+    name: "InterLude",
+    src: interLude,
+    info: "Video Shoot / Edit",
+    year: "2024",
   },
   {
-    name: "Project 3",
-    src: "https://made-byshape.transforms.svdcdn.com/production/uploads/images/workImages/Enibas/enibas-website.jpg?w=1200&h=900&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1707144175&s=b33de7522d0c6cd8dea562da13a57ea7",
-    info: "Branding",
+    name: "Chemin Esports",
+    src: Chemin,
+    info: "Web Development",
     year: "2023",
   },
-  {
-    name: "Project 4",
-    src: "https://made-byshape.transforms.svdcdn.com/production/uploads/images/sketch-website.jpg?w=1200&h=900&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1707141871&s=438e1e3662fb9fbb53df517ff93b4a4a",
-    info: "Branding",
-    year: "2023",
-  },
+  // {
+  //   name: "Demox Productions",
+  //   src: Demox,
+  //   info: "Web Development",
+  //   year: "2023",
+  // },
 ];
 
 const PortfolioSection = () => {

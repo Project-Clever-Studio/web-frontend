@@ -137,6 +137,7 @@ const content = [
 const Approch = () => {
   const titleRef = useRef(null);
   const contentRef = useRef([]);
+  const imageRef = useRef(null);
 
   useGSAP(() => {
     const titleSplit = SplitType.create(titleRef.current, {
@@ -152,6 +153,11 @@ const Approch = () => {
     gsap.set(contentRef.current, {
       filter: "blur(5px)",
       y: 100,
+    });
+
+    gsap.set(imageRef.current, {
+      y: 100,
+      opacity: 0,
     });
 
     const titleAnimation = gsap.to(titleSplit.words, {
@@ -180,6 +186,18 @@ const Approch = () => {
         toggleActions: "play none none reverse",
       },
     });
+
+    gsap.to(imageRef.current, {
+      y: 0,
+      opacity: 1,
+      ease: "expo.out",
+      duration: 1.5,
+      scrollTrigger: {
+        trigger: imageRef.current,
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      },
+    });
   });
 
   const animateTab = (index) => {
@@ -203,7 +221,7 @@ const Approch = () => {
           and beyond.
         </Title>
         <ContentWrapper>
-          <ImageWrapper>
+          <ImageWrapper ref={imageRef}>
             <img src={content[0].image} alt="" />
           </ImageWrapper>
           <Content>

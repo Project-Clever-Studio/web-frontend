@@ -36,8 +36,7 @@ const Content = styled.div`
   margin-left: auto;
   margin-top: 4rem;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  justify-content: flex-end;
   @media (max-width: 1080px) {
   }
   @media (max-width: 768px) {
@@ -144,10 +143,10 @@ const About = () => {
         </h2>
       </Title>
       <Content>
-        <Button>
+        {/* <Button>
           <span>About Us</span>
-          {/* <HiMiniArrowLongRight /> */}
-        </Button>
+          <HiMiniArrowLongRight />
+        </Button> */}
         <Info>
           <p ref={infoRef}>
             We’ve been helping brand's globally We are a leading Creative Agency
