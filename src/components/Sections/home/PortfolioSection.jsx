@@ -91,9 +91,9 @@ const ProjectCard = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  overflow: hidden;
   border-radius: 1.3rem;
   cursor: pointer;
+  overflow: hidden;
   img {
     width: 100%;
     object-fit: cover;
@@ -163,24 +163,28 @@ const projects = [
     src: TechBucket,
     info: "Web Development",
     year: "2024",
+    url: "https://techbucket.ca/",
   },
   {
     name: "InterLude",
     src: interLude,
     info: "Video Shoot / Edit",
     year: "2024",
+    url: "https://www.youtube.com/watch?v=ch0fTOwQD30&t=3s",
   },
   {
     name: "3D Gaming Room",
     src: Vasma3D,
     info: "3D Production",
     year: "2023",
+    url: "https://www.instagram.com/p/C5Rh6qwSAtz/?img_index=1",
   },
   {
     name: "igloaded",
     src: igloaded,
     info: "Web Development",
     year: "2023",
+    url: "https://igloaded.com/",
   },
 ];
 
@@ -267,11 +271,13 @@ const PortfolioSection = () => {
                 }));
               }}
             >
-              <img
-                ref={(element) => (imageRef.current[index] = element)}
-                src={item.src}
-                alt=""
-              />
+              <a href={item.url} target="_blank">
+                <img
+                  ref={(element) => (imageRef.current[index] = element)}
+                  src={item.src}
+                  alt=""
+                />
+              </a>
             </ImageWrapper>
             <InfoWrapper>
               <div className="info">

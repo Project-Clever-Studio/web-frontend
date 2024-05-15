@@ -178,23 +178,19 @@ const InfoWrapper = styled.div`
 
 const projects = [
   {
-    name: "Tech Bucket",
-    src: TechBucket,
-    info: "Web Development",
-    year: "2024",
-    category: 1,
-  },
-  {
     name: "InterLude",
     src: interLude,
     info: "Video Shoot / Edit",
     year: "2024",
+    url: "https://www.youtube.com/watch?v=ch0fTOwQD30&t=3s",
   },
+
   {
     name: "3D Gaming Room",
     src: Vasma3D,
     info: "3D Production",
     year: "2023",
+    url: "https://www.instagram.com/p/C5Rh6qwSAtz/?img_index=1",
   },
   {
     name: "BMPS Lan Event",
@@ -202,6 +198,7 @@ const projects = [
     info: "Video Shoot / Edit",
     year: "2023",
     category: 1,
+    url: "https://www.youtube.com/watch?v=hw1lp4vJX-8&t=12s",
   },
   {
     name: "Demox Productions",
@@ -209,12 +206,22 @@ const projects = [
     info: "Web Development",
     year: "2023",
     category: 6,
+    url: "https://www.demoxproductions.com/",
+  },
+  {
+    name: "Tech Bucket",
+    src: TechBucket,
+    info: "Web Development",
+    year: "2024",
+    category: 1,
+    url: "https://techbucket.ca/",
   },
   {
     name: "igloaded",
     src: igloaded,
     info: "Web Development",
     year: "2023",
+    url: "https://igloaded.com/",
   },
   {
     name: "Chemin Esports",
@@ -222,6 +229,7 @@ const projects = [
     info: "Web Development",
     year: "2023",
     category: 6,
+    url: "http://cheminesports.com/",
   },
 ];
 
@@ -331,7 +339,9 @@ const Portfolio = () => {
                       }));
                     }}
                   >
-                    <img src={item.src} alt="" />
+                    <a href={item.url} target="_blank">
+                      <img src={item.src} alt="" />
+                    </a>
                   </ImageWrapper>
                   <InfoWrapper>
                     <div className="info">

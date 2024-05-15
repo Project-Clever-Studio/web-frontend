@@ -13,6 +13,8 @@ import { useContextProvider } from "../utils/GlobleContextProvider";
 import Marquee from "../components/Marquee";
 import Approch from "../components/Sections/home/Approch";
 
+import Showreel from "../assets/video/showreel.mp4";
+
 const Container = styled.div``;
 
 const Hero = styled.div`
@@ -304,7 +306,7 @@ const Home = () => {
             >
               <video
                 ref={videoRef}
-                src="https://video-previews.elements.envatousercontent.com/h264-video-previews/2aaa15f9-96db-4d86-8d47-cbc766cb8dfa/36822602.mp4"
+                src={Showreel}
                 muted
                 autoPlay
                 playsInline
