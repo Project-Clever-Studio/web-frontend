@@ -367,17 +367,22 @@ const About = () => {
             </div>
           ))}
         </Awards>
-        <Team>
+        {/* <Team>
           <div className="title">
             <span>Our Team</span>
           </div>
           <div className="members">
-            <div className="member"></div>
+            <div className="member">
+              <img
+                src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt=""
+              />
+            </div>
             <div className="member"></div>
             <div className="member"></div>
             <div className="member"></div>
           </div>
-        </Team>
+        </Team> */}
       </Container>
     </RouteTransition>
   );
@@ -402,11 +407,19 @@ const Team = styled.div`
     justify-content: space-between;
 
     .member {
-      padding: 2rem 3rem;
       height: 60vh;
-      width: clamp(auto, 21.5vw, 100%);
+      width: clamp(15vw, 21.5vw, 100%);
       background-color: #f7f7f7;
       border-radius: 20px;
+      overflow: hidden;
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        filter: grayscale(1);
+        opacity: 0.9;
+      }
     }
   }
 `;
