@@ -1,234 +1,168 @@
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-
-import BG1 from "../assets/Images/bg1.png";
-import BG2 from "../assets/Images/bg2.png";
-import BG3 from "../assets/Images/bg3.png";
+import { motion } from "framer-motion";
 
 const Container = styled.div`
-  padding-top: 10rem;
+  padding-top: 5rem;
+  margin: 0 3rem;
   @media (max-width: 768px) {
     padding: 0 1rem;
     padding-top: 5rem;
   }
 `;
 
-const Title = styled.div`
+const Wrapper = styled.div`
+  margin-top: 4rem;
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  padding: 0 3rem;
-  margin-bottom: 3rem;
-  h2 {
-    font-size: 6rem;
+  flex-direction: column;
+
+  .title {
+    font-size: 4.5rem;
     font-weight: 600;
-    text-transform: uppercase;
-    span {
-      line-height: 1;
-      display: block;
-    }
+    margin-bottom: 3rem;
   }
-  @media (max-width: 768px) {
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 0;
-    h2 {
-      font-size: 2.8rem;
-    }
-  }
-`;
 
-const HorizontalWrapper = styled.div`
-  width: max-content;
-  display: flex;
-  gap: 1rem;
-  padding: 0 3rem;
-
-  .card {
-    opacity: 1;
+  .award {
     position: relative;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    padding: 1.5rem;
-    height: 60vh;
-    width: 20vw;
-    background-color: #f0f0f0;
-    border-radius: 30px;
-    overflow: hidden;
-    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-
-    .image {
+    display: grid;
+    grid-template-columns: 1.75fr 1fr 0.5fr;
+    padding: 4rem 3rem;
+    border-bottom: 1px solid #e4e4e4;
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    cursor: pointer;
+    .background {
       height: 100%;
       width: 100%;
       position: absolute;
+      background-color: #161616;
       top: 0;
       left: 0;
-      z-index: 1;
-      transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
 
-      img {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
+    .type {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.5rem;
+      z-index: 4;
+      span {
+        font-size: 1.2rem;
+      }
+
+      .name {
+        font-size: 1.5rem;
+        font-weight: 500;
       }
     }
 
-    .info {
-      z-index: 2;
+    .additional {
+      z-index: 4;
+      font-size: 1.5rem;
+      letter-spacing: 0.5px;
+      line-height: 1.4;
+      font-weight: 500;
+    }
+
+    .navigate {
       display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      width: 95%;
+      justify-content: flex-end;
+      align-items: center;
+      z-index: 4;
 
-      .tag {
-        padding: 0.8rem 1.5rem;
-        width: fit-content;
-        background-color: #fff;
-        border-radius: 20px;
-        font-family: "Mona Sans";
-        font-size: 0.9rem;
-        font-weight: 500;
+      svg {
+        fill: #000;
+        transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
       }
-
-      span {
-        color: #f0f0f0;
-        font-family: "Mona Sans";
-        font-size: 1.1rem;
-        font-weight: 400;
-        line-height: 1.4;
+    }
+    &:hover {
+      .navigate {
+        svg {
+          transform: rotate(45deg);
+        }
       }
     }
   }
 
-  @media (max-width: 768px) {
-    margin-top: 2rem;
-    padding: 0;
-    .card {
-      width: 80vw;
+  .light {
+    color: #fff;
+
+    .navigate {
+      svg {
+        fill: #fff;
+      }
     }
   }
 `;
 
-const Cards = [
-  {
-    image: BG1,
-    service: "Web Dev",
-    info: "We specialize in crafting tailored web development solutions that elevate your online presence and drive business growth.",
-  },
-  {
-    image: BG2,
-    service: "App Dev",
-    info: "We specialize in crafting tailored web development solutions that elevate your online presence and drive business growth.",
-  },
-  {
-    image: BG3,
-    service: "Backend Dev",
-    info: "We specialize in crafting tailored web development solutions that elevate your online presence and drive business growth.",
-  },
-  {
-    image: BG1,
-    service: "Web Dev",
-    info: "We specialize in crafting tailored web development solutions that elevate your online presence and drive business growth.",
-  },
-  {
-    image: BG2,
-    service: "Web Dev",
-    info: "We specialize in crafting tailored web development solutions that elevate your online presence and drive business growth.",
-  },
-  {
-    image: BG1,
-    service: "Web Dev",
-    info: "We specialize in crafting tailored web development solutions that elevate your online presence and drive business growth.",
-  },
-  {
-    image: BG2,
-    service: "Web Dev",
-    info: "We specialize in crafting tailored web development solutions that elevate your online presence and drive business growth.",
-  },
-];
-
 const Services = () => {
-  const containerRef = useRef(null);
-  const horizontalSection = useRef(null);
+  const [hoveredService, setHoveredService] = useState(-1);
 
-  const cardsRef = useRef([]);
-
-  useGSAP(() => {
-    let mm = gsap.matchMedia();
-    mm.add("(min-width: 1080px)", () => {
-      gsap.to(horizontalSection.current, {
-        ease: "none",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top -10%",
-          pin: true,
-          scrub: 0.6,
-          end: "+=1200px",
-        },
-        x: -(horizontalSection.current.offsetWidth - window.innerWidth),
-      });
-    });
-  });
-
-  const animateCards = (id) => {
-    const tl = gsap.timeline({
-      defaults: {
-        duration: 0.05,
-        ease: "expo.out",
-        filter: "blur(0)",
-        scale: 1,
-      },
-    });
-
-    if (id !== null) {
-      tl.to(cardsRef.current, {
-        opacity: 0.7,
-        filter: "blur(2px)",
-      }).to(
-        cardsRef.current[id],
-        {
-          opacity: 1,
-          scale: 1.025,
-        },
-        "-=0.05"
-      );
-    } else {
-      tl.to(cardsRef.current, {
-        opacity: 1,
-      });
-    }
-  };
+  const servicesData = [
+    {
+      name: "Graphic Design",
+      type: "Agency",
+      description:
+        "From logos to layouts, our graphic wizards turn visions into visuals that captivate and communicate",
+    },
+    {
+      name: "3D / 2D Animations",
+      type: "Project",
+      description:
+        "Bringing stories to life through stunning animations, our team creates immersive experiences that leave a lasting impact.",
+    },
+    {
+      name: "Web/App Development",
+      type: "Team",
+      description:
+        "Building digital landscapes where innovation meets functionality, we craft seamless online experiences that drive results.",
+    },
+    {
+      name: "UI / UX Development",
+      type: "Project",
+      description:
+        "Crafting interfaces that feel as good as they look, our team ensures every click is intuitive and every visit unforgettable.",
+    },
+  ];
 
   return (
-    <Container ref={containerRef}>
-      <Title>
-        <h2>
-          <span>Our</span> <span>Services</span>
-        </h2>
-      </Title>
-      <HorizontalWrapper ref={horizontalSection}>
-        {Cards.map((item, index) => (
+    <Container>
+      <Wrapper>
+        {servicesData.map((award, index) => (
           <div
-            className="card"
-            key={index}
-            ref={(element) => (cardsRef.current[index] = element)}
-            onMouseEnter={() => animateCards(index)}
-            onMouseLeave={() => animateCards(null)}
+            className={`award ${hoveredService == index + 1 ? "light" : ""}`}
+            onMouseEnter={() => setHoveredService(index + 1)}
+            onMouseLeave={() => setHoveredService(-1)}
           >
-            <div className="image">
-              <img src={item.image} alt="" />
+            {hoveredService == index + 1 && (
+              <motion.div
+                layout={true}
+                layoutId="bgScaleAnim"
+                className="background"
+                transition={{
+                  layout: { ease: [0.16, 1, 0.3, 1] },
+                }}
+              ></motion.div>
+            )}
+
+            <div className="type">
+              <span className="name">{award.name}</span>
+              <span>{award.type}</span>
             </div>
-            <div className="info">
-              <div className="tag">{item.service}</div>
-              <span>{item.info}</span>
+            <div className="additional">{award.description}</div>
+            <div className="navigate">
+              <svg
+                width="25"
+                height="25"
+                viewBox="0 0 17 17"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M16.3211 1.92894C16.3211 1.23858 15.7614 0.67894 15.0711 0.67894H3.82109C3.13073 0.67894 2.57109 1.23858 2.57109 1.92894C2.57109 2.6193 3.13073 3.17894 3.82109 3.17894H13.8211V13.1789C13.8211 13.8693 14.3807 14.4289 15.0711 14.4289C15.7614 14.4289 16.3211 13.8693 16.3211 13.1789V1.92894ZM1.81284 16.955L15.955 2.81282L14.1872 1.04506L0.0450716 15.1872L1.81284 16.955Z" />
+              </svg>
             </div>
           </div>
         ))}
-      </HorizontalWrapper>
+      </Wrapper>
     </Container>
   );
 };

@@ -217,7 +217,7 @@ const Home = () => {
         opacity: 0,
       })
       .set(showReelRef.current, {
-        y: 150,
+        x: 150,
         opacity: 0,
       });
 
@@ -243,10 +243,10 @@ const Home = () => {
         .to(
           showReelRef.current,
           {
-            y: 0,
+            x: 0,
             opacity: 1,
           },
-          "<.2"
+          "<.4"
         );
     }
   }, [preloader]);
@@ -317,8 +317,8 @@ const Home = () => {
         <PortfolioSection />
         <Approch />
         <Services />
-        {/* <Brands /> */}
-        {/* <Marquee /> */}
+        <Brands />
+        <Marquee />
       </Container>
     </RouteTransition>
   );

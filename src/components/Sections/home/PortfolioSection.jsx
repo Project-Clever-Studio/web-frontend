@@ -219,7 +219,7 @@ const PortfolioSection = () => {
       gsap.to(element, {
         filter: "blur(0px)",
         scale: 1,
-        duration: 1,
+        duration: 0.75,
         scrollTrigger: {
           trigger: element,
           start: "top 80%",
