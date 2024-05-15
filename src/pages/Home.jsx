@@ -217,7 +217,7 @@ const Home = () => {
         opacity: 0,
       })
       .set(showReelRef.current, {
-        x: 150,
+        y: 150,
         opacity: 0,
       });
 
@@ -238,15 +238,15 @@ const Home = () => {
             stagger: 0.05,
             ease: "power.inOut",
           },
-          "<.1"
+          "<.4"
         )
         .to(
           showReelRef.current,
           {
-            x: 0,
+            y: 0,
             opacity: 1,
           },
-          "<.1"
+          "<.2"
         );
     }
   }, [preloader]);

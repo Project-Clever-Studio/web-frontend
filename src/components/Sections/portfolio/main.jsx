@@ -4,10 +4,10 @@ import { useContextProvider } from "../../../utils/GlobleContextProvider";
 import SplitType from "split-type";
 import gsap from "gsap";
 import { Link } from "react-router-dom";
+import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 
 const Container = styled.div`
-  padding: 0 8rem;
-  padding-top: 10rem;
+  padding: 10rem 8rem 4rem 8rem;
   @media (max-width: 1080px) {
     padding: 0 2rem;
     padding-top: 6rem;
@@ -41,12 +41,8 @@ const Title = styled.div`
     display: grid;
     gap: 1rem;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    .title {
-      text-align: left;
-      grid-column: 4;
-    }
     .btn {
-      text-transform: capitalize;
+      text-transform: uppercase;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -81,16 +77,19 @@ const Title = styled.div`
 
 const ProjectWrapper = styled.div`
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
   margin-top: 4rem;
+
+  .animateWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
   @media (max-width: 1080px) {
     margin-top: 2rem;
   }
 `;
 
-const ProjectCard = styled.div`
+const ProjectCard = styled(motion.div)`
   width: calc(50% - 1rem);
   height: fit-content;
   &:nth-child(even) {
@@ -188,24 +187,28 @@ const projects = [
     src: "https://res.cloudinary.com/dzsocqtuc/image/upload/v1714649196/MacBook_Air_-_2_xxhjko.png",
     info: "Branding",
     year: "2023",
+    category: 1,
   },
   {
     name: "Demox Productions",
     src: "https://res.cloudinary.com/dzsocqtuc/image/upload/v1712916071/demoxPoster_juxvm0.jpg",
     info: "Branding",
     year: "2023",
+    category: 1,
   },
   {
     name: "Project 3",
     src: "https://made-byshape.transforms.svdcdn.com/production/uploads/images/workImages/Enibas/enibas-website.jpg?w=1200&h=900&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1707144175&s=b33de7522d0c6cd8dea562da13a57ea7",
     info: "Branding",
     year: "2023",
+    category: 2,
   },
   {
     name: "Project 4",
     src: "https://made-byshape.transforms.svdcdn.com/production/uploads/images/sketch-website.jpg?w=1200&h=900&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1707141871&s=438e1e3662fb9fbb53df517ff93b4a4a",
     info: "Branding",
     year: "2023",
+    category: 6,
   },
 ];
 
@@ -264,16 +267,15 @@ const PortfolioMain = () => {
           <span>Ventures</span>
         </div>
         <div className="sort">
-          <div className="title">Sort by category</div>
           {categories.map((category, index) => (
             <div
-              className={`btn ${activeCategory == index ? "active" : ""}`}
+              className={`btn ${activeCategory == index + 1 ? "active" : ""}`}
               onClick={() => {
-                if (activeCategory == index) {
+                if (activeCategory == index + 1) {
                   setActiveCategory(-1);
                   return;
                 }
-                setActiveCategory(index);
+                setActiveCategory(index + 1);
               }}
             >
               {category}
@@ -282,42 +284,50 @@ const PortfolioMain = () => {
         </div>
       </Title>
       <ProjectWrapper>
-        {projects.map((item, index) => (
-          <ProjectCard key={index}>
-            <ImageWrapper
-              onMouseEnter={() =>
-                setCursorSettings((prevSettings) => ({
-                  ...prevSettings,
-                  size: 2,
-                  color: "#00000021",
-                  border: "transparent",
-                  text: "View",
-                  isBlending: false,
-                  blur: true,
-                }))
-              }
-              onMouseLeave={() => {
-                setCursorSettings((prevSettings) => ({
-                  ...prevSettings,
-                  size: 1,
-                  color: "transparent",
-                  border: "#00000057",
-                  text: "",
-                  isBlending: true,
-                  blur: false,
-                }));
-              }}
-            >
-              <img src={item.src} alt="" />
-            </ImageWrapper>
-            <InfoWrapper>
-              <div className="info">
-                <p>{item.year}</p>•<p>{item.info}</p>
-              </div>
-              <h2>{item.name}</h2>
-            </InfoWrapper>
-          </ProjectCard>
-        ))}
+        <div className="animateWrapper">
+          {projects
+            .filter((project) =>
+              activeCategory == -1
+                ? project
+                : project.category == activeCategory
+            )
+            .map((item) => (
+              <ProjectCard key={item.src}>
+                <ImageWrapper
+                  onMouseEnter={() =>
+                    setCursorSettings((prevSettings) => ({
+                      ...prevSettings,
+                      size: 2,
+                      color: "#00000021",
+                      border: "transparent",
+                      text: "View",
+                      isBlending: false,
+                      blur: true,
+                    }))
+                  }
+                  onMouseLeave={() => {
+                    setCursorSettings((prevSettings) => ({
+                      ...prevSettings,
+                      size: 1,
+                      color: "transparent",
+                      border: "#00000057",
+                      text: "",
+                      isBlending: true,
+                      blur: false,
+                    }));
+                  }}
+                >
+                  <img src={item.src} alt="" />
+                </ImageWrapper>
+                <InfoWrapper>
+                  <div className="info">
+                    <p>{item.year}</p>•<p>{item.info}</p>
+                  </div>
+                  <h2>{item.name}</h2>
+                </InfoWrapper>
+              </ProjectCard>
+            ))}
+        </div>
       </ProjectWrapper>
       <Button>
         <Link to="/portfolio">View All Projects</Link>
