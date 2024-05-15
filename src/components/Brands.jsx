@@ -3,6 +3,12 @@ import styled from "styled-components";
 import { useContextProvider } from "../utils/GlobleContextProvider";
 import { color } from "framer-motion";
 
+import Mj from "../assets/Logo/MG.png";
+import Godrej from "../assets/Logo/godrej.png";
+import ICICI from "../assets/Logo/icici.png";
+import IIT from "../assets/Logo/iitKanpur.png";
+import Zomato from "../assets/Logo/Zomato.png";
+
 const Container = styled.div`
   padding: 10rem 5rem;
   @media (max-width: 1080px) {
@@ -70,34 +76,19 @@ const Brands = () => {
   const { setCursorSettings } = useContextProvider();
   const [brands, setBrands] = useState([
     {
-      url: "https://demo.themetorium.net/html/nui/assets/img/clients/client-1-dark.png",
+      url: Mj,
     },
     {
-      url: "https://demo.themetorium.net/html/nui/assets/img/clients/client-2-dark.png",
+      url: Godrej,
     },
     {
-      url: "https://demo.themetorium.net/html/nui/assets/img/clients/client-3-dark.png",
+      url: ICICI,
     },
     {
-      url: "https://demo.themetorium.net/html/nui/assets/img/clients/client-4-dark.png",
+      url: IIT,
     },
     {
-      url: "https://demo.themetorium.net/html/nui/assets/img/clients/client-5-dark.png",
-    },
-    {
-      url: "https://demo.themetorium.net/html/nui/assets/img/clients/client-6-dark.png",
-    },
-    {
-      url: "https://demo.themetorium.net/html/nui/assets/img/clients/client-7-dark.png",
-    },
-    {
-      url: "https://demo.themetorium.net/html/nui/assets/img/clients/client-8-dark.png",
-    },
-    {
-      url: "https://demo.themetorium.net/html/nui/assets/img/clients/client-9-dark.png",
-    },
-    {
-      url: "https://demo.themetorium.net/html/nui/assets/img/clients/client-10-dark.png",
+      url: Zomato,
     },
   ]);
 

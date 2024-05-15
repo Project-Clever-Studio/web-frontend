@@ -5,10 +5,10 @@ import SplitType from "split-type";
 import gsap from "gsap";
 import { Link } from "react-router-dom";
 
-import Chemin from "../../../assets/portfolio/chemin.png";
+import igloaded from "../../../assets/portfolio/igloaded.png";
 import TechBucket from "../../../assets/portfolio/techbucket.png";
-import BMPS from "../../../assets/portfolio/bmps.png";
 import interLude from "../../../assets/portfolio/interlude.png";
+import Vasma3D from "../../../assets/portfolio/Vasma3D.png";
 
 const Container = styled.div`
   padding: 0 3rem;
@@ -165,29 +165,23 @@ const projects = [
     year: "2024",
   },
   {
-    name: "BMPS Lan Event",
-    src: BMPS,
-    info: "Video Shoot / Edit",
-    year: "2023",
-  },
-  {
     name: "InterLude",
     src: interLude,
     info: "Video Shoot / Edit",
     year: "2024",
   },
   {
-    name: "Chemin Esports",
-    src: Chemin,
+    name: "3D Gaming Room",
+    src: Vasma3D,
+    info: "3D Production",
+    year: "2023",
+  },
+  {
+    name: "igloaded",
+    src: igloaded,
     info: "Web Development",
     year: "2023",
   },
-  // {
-  //   name: "Demox Productions",
-  //   src: Demox,
-  //   info: "Web Development",
-  //   year: "2023",
-  // },
 ];
 
 const PortfolioSection = () => {

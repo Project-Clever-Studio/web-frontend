@@ -6,10 +6,13 @@ import { motion } from "framer-motion";
 import { useContextProvider } from "../utils/GlobleContextProvider";
 import RouteTransition from "../components/RouteTransition";
 
-import Chemin from "../assets/portfolio/chemin.png";
 import TechBucket from "../assets/portfolio/techbucket.png";
-import BMPS from "../assets/portfolio/bmps.png";
 import interLude from "../assets/portfolio/interlude.png";
+import Vasma3D from "../assets/portfolio/Vasma3D.png";
+import BMPS from "../assets/portfolio/bmps.png";
+import Demox from "../assets/portfolio/demox.png";
+import Chemin from "../assets/portfolio/chemin.png";
+import igloaded from "../assets/portfolio/igloaded.png";
 
 const Container = styled.div`
   padding: 10rem 3rem 4rem 3rem;
@@ -182,6 +185,18 @@ const projects = [
     category: 1,
   },
   {
+    name: "InterLude",
+    src: interLude,
+    info: "Video Shoot / Edit",
+    year: "2024",
+  },
+  {
+    name: "3D Gaming Room",
+    src: Vasma3D,
+    info: "3D Production",
+    year: "2023",
+  },
+  {
     name: "BMPS Lan Event",
     src: BMPS,
     info: "Video Shoot / Edit",
@@ -189,11 +204,17 @@ const projects = [
     category: 1,
   },
   {
-    name: "InterLude",
-    src: interLude,
-    info: "Video Shoot / Edit",
-    year: "2024",
-    category: 2,
+    name: "Demox Productions",
+    src: Demox,
+    info: "Web Development",
+    year: "2023",
+    category: 6,
+  },
+  {
+    name: "igloaded",
+    src: igloaded,
+    info: "Web Development",
+    year: "2023",
   },
   {
     name: "Chemin Esports",

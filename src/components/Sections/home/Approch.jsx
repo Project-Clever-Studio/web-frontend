@@ -4,6 +4,8 @@ import React, { useRef } from "react";
 import SplitType from "split-type";
 import styled from "styled-components";
 
+import ApprochIMG from "../../../assets/Images/ApporchIMG.png";
+
 const Container = styled.div`
   margin-top: 8rem;
   padding: 0 3rem;
@@ -222,7 +224,7 @@ const Approch = () => {
         </Title>
         <ContentWrapper>
           <ImageWrapper ref={imageRef}>
-            <img src={content[0].image} alt="" />
+            <img src={ApprochIMG} alt="" />
           </ImageWrapper>
           <Content>
             {content.map((item, index) => (
