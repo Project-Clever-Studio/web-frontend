@@ -6,7 +6,7 @@ import { FaArrowRight } from "react-icons/fa";
 import SplitType from "split-type";
 import RouteTransition from "../components/RouteTransition";
 import Brands from "../components/Brands";
-import Services from "../components/Services";
+import Services from "../components/Sections/home/Services";
 import About from "../components/Sections/home/About";
 import PortfolioSection from "../components/Sections/home/PortfolioSection";
 import { useContextProvider } from "../utils/GlobleContextProvider";
@@ -316,9 +316,9 @@ const Home = () => {
           </ShowReel>
         </Hero>
         <About />
+        <Services />
         <PortfolioSection />
         <Approch />
-        <Services />
         <Brands />
         <Marquee />
       </Container>

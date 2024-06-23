@@ -219,7 +219,6 @@ const PortfolioSection = () => {
     });
 
     imageRef.current.forEach((element, i) => {
-      console.log(element, i);
       gsap.set(element, {
         filter: "blur(10px)",
         scale: 1.1,

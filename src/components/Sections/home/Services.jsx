@@ -1,7 +1,7 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 
 const Conatiner = styled.div`
@@ -28,7 +28,7 @@ const ContentWrapper = styled.div`
 `;
 
 const Content = styled.div`
-  width: 50%;
+  width: 80%;
   height: 100svh;
   display: flex;
   flex-direction: column;
@@ -37,14 +37,17 @@ const Content = styled.div`
     display: none;
   }
   h1 {
-    font-size: 2.5rem;
+    font-size: 4rem;
     font-weight: 500;
+    text-transform: uppercase;
+    font-weight: 600;
     padding-bottom: 1rem;
   }
   p {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 400;
     padding-bottom: 1rem;
+    line-height: 1.6;
   }
   @media (max-width: 768px) {
     width: 100%;
@@ -118,44 +121,51 @@ const Button = styled.div`
 const servicesData = [
   {
     name: "Product shoot",
-    info: "Elevate your products with our expert Product Shoot service. From gadgets to gourmet, we capture it all with flair. Let our team showcase your offerings in the best light possible.",
+    info: "Elevate your products with our expert Product Shoot service. From gadgets to gourmet, we capture it all with flair. Let our team showcase your offerings in the best light possible. Elevate your products with our expert Product Shoot service. From gadgets to gourmet, we capture it all with flair. Let our team showcase your offerings in the best light possible",
     image: "https://deveb.co/static/media/vim.2c5e9ce4.jpg",
-    // image: BG1,
-    url: "",
     backgroundColor: "#fdbbff",
   },
   {
     name: "Web Development",
     info: "Transform your online presence with our Web Development service. We craft sleek, user-friendly websites tailored to your brand. From design to deployment, we ensure your site stands out and delivers a seamless experience for your visitors.",
     image: "https://deveb.co/static/media/dopop2.3974e9e7.jpg",
-    // image: BG2,
-
-    url: "",
-    backgroundColor: "#bcbbff",
+    backgroundColor: "#8d8bff",
   },
   {
     name: "Social media marketing",
     info: "TBoost your brand's online presence with our Social Media Marketing service. We craft tailored strategies to engage your audience and drive results. From content creation to analytics, we help you make a lasting impact in the digital sphere",
     image: "https://deveb.co/static/media/newdopegood.6e57b4b4.jpg",
-    url: "",
-    backgroundColor: "#ffbbbb",
+    backgroundColor: "#ff9292",
   },
   {
     name: "Nft creation",
     info: "Dive into the world of digital assets with our NFT Creation service. We help you turn your ideas into unique, blockchain-based collectibles. From concept to minting, we guide you through the process, ensuring your NFTs stand out in the digital marketplace.",
     image: "https://deveb.co/static/media/vim.2c5e9ce4.jpg",
-    url: "",
-    backgroundColor: "#bcbbff",
+    backgroundColor: "#baff9a",
+  },
+  {
+    name: "Product shoot",
+    info: "Elevate your products with our expert Product Shoot service. From gadgets to gourmet, we capture it all with flair. Let our team showcase your offerings in the best light possible. Elevate your products with our expert Product Shoot service. From gadgets to gourmet, we capture it all with flair. Let our team showcase your offerings in the best light possible",
+    image: "https://deveb.co/static/media/vim.2c5e9ce4.jpg",
+    backgroundColor: "#fdc0ff",
+  },
+  {
+    name: "Web Development",
+    info: "Transform your online presence with our Web Development service. We craft sleek, user-friendly websites tailored to your brand. From design to deployment, we ensure your site stands out and delivers a seamless experience for your visitors.",
+    image: "https://deveb.co/static/media/dopop2.3974e9e7.jpg",
+    backgroundColor: "#feffaa",
   },
 ];
 
 const Services = () => {
   const containerRef = useRef(null);
   const imageWrapperRef = useRef(null);
+  const contentRefs = useRef([]);
 
   useGSAP(() => {
     let mm = gsap.matchMedia();
     const images = gsap.utils.toArray(".image:not(:first-child)");
+    const body = document.body;
 
     mm.add("(min-width: 768px)", () => {
       gsap.set(images, { yPercent: 101 });
@@ -174,6 +184,37 @@ const Services = () => {
         scrub: true,
         animation: animation,
       });
+
+      contentRefs.current.forEach((element, index) => {
+        ScrollTrigger.create({
+          trigger: element,
+          start: "top top",
+          end: "bottom bottom",
+          onEnter: () =>
+            gsap.to(body, {
+              backgroundColor: servicesData[index].backgroundColor,
+            }),
+
+          onLeave: () => {
+            if (index === contentRefs.current.length - 1) {
+              gsap.to(body, {
+                backgroundColor: "#fff",
+              });
+            }
+          },
+          onLeaveBack: () => {
+            if (index === 0) {
+              gsap.to(body, {
+                backgroundColor: "#fff",
+              });
+            } else {
+              gsap.to(body, {
+                backgroundColor: servicesData[index - 1].backgroundColor,
+              });
+            }
+          },
+        });
+      });
     });
   });
 
@@ -181,7 +222,10 @@ const Services = () => {
     <Conatiner ref={containerRef}>
       <ContentWrapper>
         {servicesData.map((item, index) => (
-          <Content key={index}>
+          <Content
+            key={index}
+            ref={(element) => (contentRefs.current[index] = element)}
+          >
             <img src={item.image} alt="" />
             <h1>{item.name}</h1>
             <p>{item.info}</p>
