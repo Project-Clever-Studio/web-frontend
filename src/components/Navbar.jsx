@@ -173,6 +173,10 @@ const Links = [
     href: "/aboutus",
   },
   {
+    title: "Our Team",
+    href: "/team",
+  },
+  {
     title: "Services",
     href: "/aboutus",
   },

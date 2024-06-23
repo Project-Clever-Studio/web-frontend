@@ -377,10 +377,41 @@ const About = () => {
                 src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt=""
               />
+              <div className="contentBox">
+                <span className="name">Alex Markovmax</span>
+                <span className="role">Co-founder</span>
+              </div>
             </div>
-            <div className="member"></div>
-            <div className="member"></div>
-            <div className="member"></div>
+            <div className="member">
+              <img
+                src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt=""
+              />
+              <div className="contentBox">
+                <span className="name">Julie Fernandez</span>
+                <span className="role">Marketing Head</span>
+              </div>
+            </div>
+            <div className="member">
+              <img
+                src="https://images.unsplash.com/photo-1579038773867-044c48829161?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt=""
+              />
+              <div className="contentBox">
+                <span className="name">Zack Grands</span>
+                <span className="role">CFO</span>
+              </div>
+            </div>
+            <div className="member">
+              <img
+                src="https://images.unsplash.com/photo-1522556189639-b150ed9c4330?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt=""
+              />
+              <div className="contentBox">
+                <span className="name">Vince Fleming</span>
+                <span className="role">Designing Head</span>
+              </div>
+            </div>
           </div>
         </Team> */}
       </Container>
@@ -407,6 +438,7 @@ const Team = styled.div`
     justify-content: space-between;
 
     .member {
+      position: relative;
       height: 60vh;
       width: clamp(15vw, 21.5vw, 100%);
       background-color: #f7f7f7;
@@ -419,6 +451,45 @@ const Team = styled.div`
         object-fit: cover;
         filter: grayscale(1);
         opacity: 0.9;
+        transition: all 0.6s cubic-bezier(0.33, 1, 0.68, 1);
+      }
+
+      .contentBox {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(238, 174, 202, 0) 0%,
+          #000000dd 100%
+        );
+        padding: 6rem 2.5rem 1.6rem 2.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+        color: #f7f7f7;
+        opacity: 0.6;
+        transition: all 0.3s cubic-bezier(0.33, 1, 0.68, 1);
+
+        .name {
+          font-size: 1.8rem;
+          font-weight: 500;
+        }
+
+        .role {
+          opacity: 0.9;
+        }
+      }
+
+      &:hover {
+        img {
+          transform: scale(1.05);
+        }
+
+        .contentBox {
+          opacity: 1;
+        }
       }
     }
   }

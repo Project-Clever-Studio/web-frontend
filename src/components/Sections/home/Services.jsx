@@ -160,7 +160,7 @@ const servicesData = [
 const Services = () => {
   const containerRef = useRef(null);
   const imageWrapperRef = useRef(null);
-  const contentRefs = useRef([]);
+  const contents = [];
 
   useGSAP(() => {
     let mm = gsap.matchMedia();
@@ -185,7 +185,7 @@ const Services = () => {
         animation: animation,
       });
 
-      contentRefs.current.forEach((element, index) => {
+      contents.forEach((element, index) => {
         ScrollTrigger.create({
           trigger: element,
           start: "top top",
@@ -196,7 +196,7 @@ const Services = () => {
             }),
 
           onLeave: () => {
-            if (index === contentRefs.current.length - 1) {
+            if (index === contents.length - 1) {
               gsap.to(body, {
                 backgroundColor: "#fff",
               });
@@ -222,10 +222,7 @@ const Services = () => {
     <Conatiner ref={containerRef}>
       <ContentWrapper>
         {servicesData.map((item, index) => (
-          <Content
-            key={index}
-            ref={(element) => (contentRefs.current[index] = element)}
-          >
+          <Content key={index} ref={(element) => (contents[index] = element)}>
             <img src={item.image} alt="" />
             <h1>{item.name}</h1>
             <p>{item.info}</p>
