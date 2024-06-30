@@ -20,15 +20,7 @@ const Container = styled.div``;
 const Hero = styled.div`
   height: 200vh;
   position: relative;
-  @media (max-width: 768px) {
-    height: 100svh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  height: 200vh;
-  position: relative;
-  @media (max-width: 768px) {
+  @media (max-width: 1080px) {
     height: 100svh;
     display: flex;
     flex-direction: column;

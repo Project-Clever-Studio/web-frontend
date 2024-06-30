@@ -9,6 +9,10 @@ import ApprochIMG from "../../../assets/Images/ApporchIMG.png";
 const Container = styled.div`
   margin-top: 8rem;
   padding: 0 3rem;
+  @media (max-width: 1080px) {
+    margin-top: 5rem;
+    padding: 0 1rem;
+  }
   @media (max-width: 768px) {
     margin-top: 8rem;
     padding: 0 0.5rem;
@@ -21,6 +25,9 @@ const Wrapper = styled.div`
   border-radius: 2rem;
   padding: 5rem 4rem;
   height: 100%;
+  @media (max-width: 1080px) {
+    padding: 3rem;
+  }
   @media (max-width: 768px) {
     padding: 1.5rem;
   }
@@ -30,9 +37,12 @@ const Title = styled.div`
   font-size: 4rem;
   width: 60%;
   font-weight: 500;
+  @media (max-width: 1080px) {
+    width: 100%;
+    font-size: 2.5rem;
+  }
   @media (max-width: 768px) {
     font-size: 1.7rem;
-    width: 100%;
   }
 `;
 
@@ -41,8 +51,12 @@ const ContentWrapper = styled.div`
   margin-top: 3rem;
   display: flex;
   justify-content: space-between;
-  @media (max-width: 768px) {
+
+  @media (max-width: 1080px) {
     flex-direction: column;
+  }
+
+  @media (max-width: 768px) {
     margin-top: 2rem;
   }
 `;
@@ -57,16 +71,22 @@ const ImageWrapper = styled.div`
     height: 100%;
     object-fit: cover;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 1080px) {
+    height: 35vh;
     width: 100%;
+  }
+  @media (max-width: 768px) {
     height: 20vh;
   }
 `;
 
 const Content = styled.div`
   width: 45%;
-  @media (max-width: 768px) {
+  @media (max-width: 1080px) {
     width: 100%;
+    margin-top: 2.5rem;
+  }
+  @media (max-width: 768px) {
     padding: 0 1rem;
   }
 `;

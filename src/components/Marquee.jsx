@@ -19,7 +19,6 @@ const MarqueeContent = styled.div`
   font-size: 8rem;
   font-weight: 600;
   color: #000;
-
   p {
     display: flex;
     span {
@@ -32,8 +31,20 @@ const MarqueeContent = styled.div`
     }
   }
 
+  @media (max-width: 1080px) {
+    font-size: 3rem;
+    p {
+      span {
+        svg {
+          width: 2rem;
+          margin: 0 1rem;
+        }
+      }
+    }
+  }
+
   @media (max-width: 768px) {
-    font-size: 4rem;
+    font-size: 2rem;
   }
 `;
 

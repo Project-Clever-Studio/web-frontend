@@ -13,6 +13,9 @@ import BMPS from "../assets/portfolio/bmps.png";
 import Demox from "../assets/portfolio/demox.png";
 import Chemin from "../assets/portfolio/chemin.png";
 import igloaded from "../assets/portfolio/igloaded.png";
+import Moksha from "../assets/portfolio/MokshaWellness.png";
+import Glaze from "../assets/portfolio/glaze.png";
+import Firdaus from "../assets/portfolio/Firdaus.png";
 
 const Container = styled.div`
   padding: 10rem 3rem 4rem 3rem;
@@ -182,6 +185,7 @@ const projects = [
     src: interLude,
     info: "Video Shoot / Edit",
     year: "2024",
+    category: "Video Edits",
     url: "https://www.youtube.com/watch?v=ch0fTOwQD30&t=3s",
   },
 
@@ -190,6 +194,7 @@ const projects = [
     src: Vasma3D,
     info: "3D Production",
     year: "2023",
+    category: "Video Edits",
     url: "https://www.instagram.com/p/C5Rh6qwSAtz/?img_index=1",
   },
   {
@@ -197,7 +202,7 @@ const projects = [
     src: BMPS,
     info: "Video Shoot / Edit",
     year: "2023",
-    category: 1,
+    category: "Video Edits",
     url: "https://www.youtube.com/watch?v=hw1lp4vJX-8&t=12s",
   },
   {
@@ -205,7 +210,7 @@ const projects = [
     src: Demox,
     info: "Web Development",
     year: "2023",
-    category: 6,
+    category: "Web",
     url: "https://www.demoxproductions.com/",
   },
   {
@@ -213,7 +218,7 @@ const projects = [
     src: TechBucket,
     info: "Web Development",
     year: "2024",
-    category: 1,
+    category: "Web",
     url: "https://techbucket.ca/",
   },
   {
@@ -221,6 +226,7 @@ const projects = [
     src: igloaded,
     info: "Web Development",
     year: "2023",
+    category: "Web",
     url: "https://igloaded.com/",
   },
   {
@@ -228,13 +234,38 @@ const projects = [
     src: Chemin,
     info: "Web Development",
     year: "2023",
-    category: 6,
+    category: "Web",
     url: "http://cheminesports.com/",
+  },
+  {
+    name: "MokshaWellnespa",
+    src: Moksha,
+    info: "Web Development",
+    year: "2024",
+    category: "Web",
+    url: "https://mokshawellnessspa.com/",
+  },
+  {
+    name: "Glaze Opticals",
+    src: Glaze,
+    info: "Web Development",
+    year: "2024",
+    category: "Web",
+    url: "https://mokshawellnessspa.com/",
+  },
+  {
+    name: "Firdaus Media",
+    src: Firdaus,
+    info: "Web Development",
+    year: "2024",
+    category: "Web",
+    url: "https://firdausmedia.com/",
   },
 ];
 
 const Portfolio = () => {
   const { setCursorSettings } = useContextProvider();
+  const [activeCategory, setActiveCategory] = useState("All");
 
   const categories = [
     "Web",
@@ -246,8 +277,6 @@ const Portfolio = () => {
     "Marketing",
     "Contract",
   ];
-
-  const [activeCategory, setActiveCategory] = useState(-1);
 
   const titleRef = useRef(null);
 
@@ -291,14 +320,8 @@ const Portfolio = () => {
           <div className="sort">
             {categories.map((category, index) => (
               <div
-                className={`btn ${activeCategory == index + 1 ? "active" : ""}`}
-                onClick={() => {
-                  if (activeCategory == index + 1) {
-                    setActiveCategory(-1);
-                    return;
-                  }
-                  setActiveCategory(index + 1);
-                }}
+                className={`btn ${activeCategory === category ? "active" : ""}`}
+                onClick={() => setActiveCategory(category)}
               >
                 {category}
               </div>
@@ -309,9 +332,9 @@ const Portfolio = () => {
           <div className="animateWrapper">
             {projects
               .filter((project) =>
-                activeCategory == -1
+                activeCategory === "All"
                   ? project
-                  : project.category == activeCategory
+                  : project.category === activeCategory
               )
               .map((item) => (
                 <ProjectCard key={item.src}>
