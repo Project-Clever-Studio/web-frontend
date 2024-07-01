@@ -10,6 +10,8 @@ import { useGSAP } from '@gsap/react';
 import { AnimatePresence } from 'framer-motion';
 import { useContextProvider } from './utils/GlobleContextProvider';
 import gsap from 'gsap';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 //Pages
 import Home from './pages/Home';
@@ -89,6 +91,7 @@ function App() {
 
 	return (
 		<div ref={AppRef}>
+			<ToastContainer />
 			<Cursor />
 			<Navbar />
 			<Preloader />
