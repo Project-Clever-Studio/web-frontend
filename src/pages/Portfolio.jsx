@@ -9,6 +9,7 @@ import RouteTransition from "../components/RouteTransition";
 import TechBucket from "../assets/portfolio/techbucket.png";
 import interLude from "../assets/portfolio/interlude.png";
 import Vasma3D from "../assets/portfolio/Vasma3D.png";
+import Award3D from "../assets/portfolio/vasma_award.jpg";
 import BMPS from "../assets/portfolio/bmps.png";
 import Demox from "../assets/portfolio/demox.png";
 import Chemin from "../assets/portfolio/chemin.png";
@@ -16,6 +17,17 @@ import igloaded from "../assets/portfolio/igloaded.png";
 import Moksha from "../assets/portfolio/MokshaWellness.png";
 import Glaze from "../assets/portfolio/glaze.png";
 import Firdaus from "../assets/portfolio/Firdaus.png";
+
+import ICICI from "../assets/portfolio/ICICI.png";
+import AMD from "../assets/portfolio/amd_blaze_anc.jpg";
+import RIVIDY from "../assets/portfolio/rividy.jpg";
+import KREO from "../assets/portfolio/kreo.jpg";
+import MG from "../assets/portfolio/MG.jpg";
+import ROOM_3D from "../assets/portfolio/ROOM_3D.jpg";
+import Moksha_Logo from "../assets/portfolio/Moksha_Logo.jpg";
+import Bukket_Logo from "../assets/portfolio/Bukket_Logo.jpg";
+import Glaze_Logo from "../assets/portfolio/Glaze_Logo.jpg";
+import Tech_Bucket_Logo from "../assets/portfolio/Tech_Bucket_Logo.jpg";
 
 const Container = styled.div`
   padding: 10rem 3rem 4rem 3rem;
@@ -181,12 +193,36 @@ const InfoWrapper = styled.div`
 
 const projects = [
   {
+    name: "3D Room",
+    src: ROOM_3D,
+    info: "Video Shoot / Edit",
+    year: "2024",
+    category: "Video Edits",
+    url: "#",
+  },
+  {
+    name: "MG Motors",
+    src: MG,
+    info: "Video Shoot / Edit",
+    year: "2024",
+    category: "Video Edits",
+    url: "#",
+  },
+  {
     name: "InterLude",
     src: interLude,
     info: "Video Shoot / Edit",
     year: "2024",
     category: "Video Edits",
     url: "https://www.youtube.com/watch?v=ch0fTOwQD30&t=3s",
+  },
+  {
+    name: "AMD AQUA BLAZE ANC",
+    src: AMD,
+    info: "Video Shoot / Edit",
+    year: "2023",
+    category: "Video Edits",
+    url: "#",
   },
 
   {
@@ -198,12 +234,44 @@ const projects = [
     url: "https://www.instagram.com/p/C5Rh6qwSAtz/?img_index=1",
   },
   {
+    name: "The Story of Love",
+    src: Award3D,
+    info: "3D Production",
+    year: "2023",
+    category: "Video Edits",
+    url: "#",
+  },
+  {
+    name: "Brand Showreel Rividy",
+    src: RIVIDY,
+    info: "Video Edit",
+    year: "2023",
+    category: "Video Edits",
+    url: "#",
+  },
+  {
+    name: "RVNT x KREO",
+    src: KREO,
+    info: "Video Edit",
+    year: "2023",
+    category: "Video Edits",
+    url: "#",
+  },
+  {
     name: "BMPS Lan Event",
     src: BMPS,
     info: "Video Shoot / Edit",
     year: "2023",
     category: "Video Edits",
-    url: "https://www.youtube.com/watch?v=hw1lp4vJX-8&t=12s",
+    url: "https://www.youtube.com/watch?v=hw1lp4vJX-8",
+  },
+  {
+    name: "ICICI Prudential Financial Investments",
+    src: ICICI,
+    info: "Video Shoot / Edit",
+    year: "2023",
+    category: "Video Edits",
+    url: "https://www.youtube.com/watch?v=Ea8dx7kVUJc",
   },
   {
     name: "Demox Productions",
@@ -260,6 +328,38 @@ const projects = [
     year: "2024",
     category: "Web",
     url: "https://firdausmedia.com/",
+  },
+  {
+    name: "Moksha Logo Work",
+    src: Moksha_Logo,
+    info: "Logo Work",
+    year: "2024",
+    category: "Logos",
+    url: "#",
+  },
+  {
+    name: "Glaze Optics Logo Work",
+    src: Glaze_Logo,
+    info: "Logo Work",
+    year: "2024",
+    category: "Logos",
+    url: "#",
+  },
+  {
+    name: "Bukket Logo Work",
+    src: Bukket_Logo,
+    info: "Logo Work",
+    year: "2024",
+    category: "Logos",
+    url: "#",
+  },
+  {
+    name: "Tech Bucket Logo Work",
+    src: Tech_Bucket_Logo,
+    info: "Logo Work",
+    year: "2024",
+    category: "Logos",
+    url: "#",
   },
 ];
 
@@ -318,10 +418,14 @@ const Portfolio = () => {
             <span>Ventures</span>
           </div>
           <div className="sort">
-            {categories.map((category, index) => (
+            {categories.map((category) => (
               <div
                 className={`btn ${activeCategory === category ? "active" : ""}`}
-                onClick={() => setActiveCategory(category)}
+                onClick={() =>
+                  setActiveCategory(
+                    activeCategory === category ? "All" : category
+                  )
+                }
               >
                 {category}
               </div>
@@ -338,34 +442,34 @@ const Portfolio = () => {
               )
               .map((item) => (
                 <ProjectCard key={item.src}>
-                  <ImageWrapper
-                    onMouseEnter={() =>
-                      setCursorSettings((prevSettings) => ({
-                        ...prevSettings,
-                        size: 2,
-                        color: "#00000021",
-                        border: "transparent",
-                        text: "View",
-                        isBlending: false,
-                        blur: true,
-                      }))
-                    }
-                    onMouseLeave={() => {
-                      setCursorSettings((prevSettings) => ({
-                        ...prevSettings,
-                        size: 1,
-                        color: "transparent",
-                        border: "#00000057",
-                        text: "",
-                        isBlending: true,
-                        blur: false,
-                      }));
-                    }}
-                  >
-                    <a href={item.url} target="_blank">
+                  <a href={item.url} target={item.url != "#" ? "_blank" : ""}>
+                    <ImageWrapper
+                      onMouseEnter={() =>
+                        setCursorSettings((prevSettings) => ({
+                          ...prevSettings,
+                          size: 2,
+                          color: "#00000021",
+                          border: "transparent",
+                          text: "View",
+                          isBlending: false,
+                          blur: true,
+                        }))
+                      }
+                      onMouseLeave={() => {
+                        setCursorSettings((prevSettings) => ({
+                          ...prevSettings,
+                          size: 1,
+                          color: "transparent",
+                          border: "#00000057",
+                          text: "",
+                          isBlending: true,
+                          blur: false,
+                        }));
+                      }}
+                    >
                       <img src={item.src} alt="" />
-                    </a>
-                  </ImageWrapper>
+                    </ImageWrapper>
+                  </a>
                   <InfoWrapper>
                     <div className="info">
                       <p>{item.year}</p>•<p>{item.info}</p>

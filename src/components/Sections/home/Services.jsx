@@ -386,13 +386,16 @@ const Services = () => {
     <Conatiner ref={containerRef}>
       <ContentWrapper>
         {servicesData.map((item, index) => (
-          <Content key={index} ref={(element) => (contents[index] = element)}>
+          <Content
+            key={item.name}
+            ref={(element) => (contents[index] = element)}
+          >
             <img src={item.image} alt="" />
             <h1>{item.name}</h1>
             <p>{item.info}</p>
             <div className="more_info">
               {item.addInfo.map((item, index) => (
-                <div className="info">
+                <div className="info" key={item.name}>
                   <p className="service_add_info">• {item.name}:</p>
                   <p>{item.info}</p>
                 </div>
@@ -405,7 +408,7 @@ const Services = () => {
       <RightContainer>
         <ImageWrapper ref={imageWrapperRef}>
           {servicesData.map((item, index) => (
-            <Image key={index} className="image">
+            <Image key={item.name} className="image">
               <img src={item.image} alt="" />
             </Image>
           ))}
