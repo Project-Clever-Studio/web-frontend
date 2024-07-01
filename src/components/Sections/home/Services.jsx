@@ -10,6 +10,7 @@ import editingThumbnail from "../../../assets/Services/editingThumbnail.png";
 import logoThumbnail from "../../../assets/Services/logoThumbnail.png";
 import photoshootThumbnail from "../../../assets/Services/photoshootThumbnail.png";
 import SMMThumbnail from "../../../assets/Services/SMMThumbnail.png";
+import { Link } from "react-router-dom";
 
 const Conatiner = styled.div`
   display: flex;
@@ -141,7 +142,7 @@ const Image = styled.div`
   }
 `;
 
-const Button = styled.div`
+const Button = styled(Link)`
   border: 1px solid #000000b5;
   padding: 0.8rem 1.5rem;
   width: max-content;
@@ -292,7 +293,7 @@ const servicesData = [
         info: "Measuring success and optimizing performance.",
       },
     ],
-    btn: "Boost Your Social Media",
+    btnText: "Boost Your Social Media",
   },
   {
     name: "Professional shoots",
@@ -401,7 +402,7 @@ const Services = () => {
                 </div>
               ))}
             </div>
-            <Button>{item.btnText}</Button>
+            <Button to="/quote">{item.btnText}</Button>
           </Content>
         ))}
       </ContentWrapper>
