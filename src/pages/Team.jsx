@@ -1,18 +1,20 @@
 import styled from "styled-components";
 import RouteTransition from "../components/RouteTransition";
 import Ritesh from "../../public/Images/ritesh.png";
+import RiteshBlue from "../../public/Images/ritesh_light_purple.png";
 
 //React icons
 import { FaLinkedinIn, FaXTwitter, FaInstagram, FaX } from "react-icons/fa6";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const Team = () => {
   const [painting, setPainting] = useState({
     color: "#fff",
-    backgroundColor: "#000",
+    backgroundColor: "#ffffff",
   });
 
-  const Container = styled.div`
+  const Container = styled(motion.div)`
     padding: 10rem 6rem 4rem 6rem;
     @media (max-width: 1080px) {
       padding: 0 2rem;
@@ -387,10 +389,7 @@ const Team = () => {
               </div>
             </div>
             <div className="member">
-              <img
-                src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="a-man-in-suit"
-              />
+              <img src={RiteshBlue} alt="a-man-in-suit" />
               <div className="details">
                 <h1>Depressed Man</h1>
                 <p>Destroyer & UFO</p>
