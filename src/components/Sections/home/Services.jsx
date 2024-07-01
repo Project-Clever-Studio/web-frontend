@@ -4,6 +4,13 @@ import { ScrollTrigger } from "gsap/all";
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 
+import webDev from "../../../assets/Services/webDev.png";
+import appDev from "../../../assets/Services/appDev.png";
+import editingThumbnail from "../../../assets/Services/editingThumbnail.png";
+import logoThumbnail from "../../../assets/Services/logoThumbnail.png";
+import photoshootThumbnail from "../../../assets/Services/photoshootThumbnail.png";
+import SMMThumbnail from "../../../assets/Services/SMMThumbnail.png";
+
 const Conatiner = styled.div`
   display: flex;
   justify-content: space-between;
@@ -149,7 +156,7 @@ const servicesData = [
   {
     name: "Website development ",
     info: "At Clever Studio, we specialize in creating high-performance, visually stunning websites that engage users and drive business growth. Whether you need a sleek, user-friendly design or a robust e-commerce platform, our expert team has the skills and experience to deliver exceptional results.",
-    image: "https://deveb.co/static/media/vim.2c5e9ce4.jpg",
+    image: webDev,
     backgroundColor: "#DCAE96",
     addInfo: [
       {
@@ -182,7 +189,7 @@ const servicesData = [
   {
     name: "App development",
     info: "Transform your online presence with our Web Development service. We craft sleek, user-friendly websites tailored to your brand. From design to deployment, we ensure your site stands out and delivers a seamless experience for your visitors.",
-    image: "https://deveb.co/static/media/dopop2.3974e9e7.jpg",
+    image: appDev,
     backgroundColor: "#d4f3b7",
     addInfo: [
       {
@@ -211,7 +218,7 @@ const servicesData = [
   {
     name: "Video editing",
     info: "TBoost your brand's online presence with our Social Media Marketing service. We craft tailored strategies to engage your audience and drive results. From content creation to analytics, we help you make a lasting impact in the digital sphere",
-    image: "https://deveb.co/static/media/newdopegood.6e57b4b4.jpg",
+    image: editingThumbnail,
     backgroundColor: "#DFC5FE",
     addInfo: [
       {
@@ -240,7 +247,7 @@ const servicesData = [
   {
     name: "Logo designing",
     info: "Dive into the world of digital assets with our NFT Creation service. We help you turn your ideas into unique, blockchain-based collectibles. From concept to minting, we guide you through the process, ensuring your NFTs stand out in the digital marketplace.",
-    image: "https://deveb.co/static/media/vim.2c5e9ce4.jpg",
+    image: logoThumbnail,
     backgroundColor: "#A0D9EF",
     addInfo: [
       {
@@ -265,7 +272,7 @@ const servicesData = [
   {
     name: "Social media management",
     info: "Elevate your products with our expert Product Shoot service. From gadgets to gourmet, we capture it all with flair. Let our team showcase your offerings in the best light possible. Elevate your products with our expert Product Shoot service. From gadgets to gourmet, we capture it all with flair. Let our team showcase your offerings in the best light possible",
-    image: "https://deveb.co/static/media/vim.2c5e9ce4.jpg",
+    image: SMMThumbnail,
     backgroundColor: "#FDFD96",
     addInfo: [
       {
@@ -290,7 +297,7 @@ const servicesData = [
   {
     name: "Professional shoots",
     info: "Transform your online presence with our Web Development service. We craft sleek, user-friendly websites tailored to your brand. From design to deployment, we ensure your site stands out and delivers a seamless experience for your visitors.",
-    image: "https://deveb.co/static/media/dopop2.3974e9e7.jpg",
+    image: photoshootThumbnail,
     backgroundColor: "#f4978e",
     addInfo: [
       {
@@ -346,8 +353,8 @@ const Services = () => {
     contents.forEach((element, index) => {
       ScrollTrigger.create({
         trigger: element,
-        start: "top top",
-        end: "bottom bottom",
+        start: "top 30%",
+        end: "bottom 30%",
         onEnter: () =>
           gsap.to(body, {
             backgroundColor: servicesData[index].backgroundColor,

@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import RouteTransition from "../components/RouteTransition";
-import Ritesh from "../../public/Images/ritesh.png";
 
 //React icons
 import { FaLinkedinIn, FaXTwitter, FaInstagram } from "react-icons/fa6";
