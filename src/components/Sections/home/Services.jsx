@@ -9,10 +9,9 @@ const Conatiner = styled.div`
   justify-content: space-between;
   margin: 0 8rem;
   margin-top: 5rem;
-
   @media (max-width: 768px) {
     margin: 0 1rem;
-    margin-top: 5rem;
+    margin-top: 2rem;
   }
 `;
 
@@ -49,6 +48,21 @@ const Content = styled.div`
     padding-bottom: 1rem;
     line-height: 1.6;
   }
+  .more_info {
+    .info {
+      display: flex;
+      align-items: center;
+      p {
+        padding: 0;
+        font-size: 1rem;
+        padding-bottom: 0.7rem;
+      }
+      .service_add_info {
+        padding-right: 0.5rem;
+        font-weight: 600;
+      }
+    }
+  }
   @media (max-width: 768px) {
     width: 100%;
     height: fit-content;
@@ -64,11 +78,23 @@ const Content = styled.div`
     }
     h1 {
       margin-top: 1.5rem;
-      font-size: 2rem;
+      font-size: 1.7rem;
       padding-bottom: 0.5rem;
     }
     p {
       font-size: 0.9rem;
+      line-height: 1.2;
+    }
+    .more_info {
+      .info {
+        display: block;
+        p {
+          padding-right: 0;
+          &:last-child {
+            padding-left: 0.6rem;
+          }
+        }
+      }
     }
   }
 `;
@@ -114,46 +140,177 @@ const Button = styled.div`
   width: max-content;
   border-radius: 2rem;
   @media (max-width: 768px) {
+    margin-top: 1.5rem;
     padding: 0.5rem 1rem;
   }
 `;
 
 const servicesData = [
   {
-    name: "Product shoot",
-    info: "Elevate your products with our expert Product Shoot service. From gadgets to gourmet, we capture it all with flair. Let our team showcase your offerings in the best light possible. Elevate your products with our expert Product Shoot service. From gadgets to gourmet, we capture it all with flair. Let our team showcase your offerings in the best light possible",
+    name: "Website development ",
+    info: "At Clever Studio, we specialize in creating high-performance, visually stunning websites that engage users and drive business growth. Whether you need a sleek, user-friendly design or a robust e-commerce platform, our expert team has the skills and experience to deliver exceptional results.",
     image: "https://deveb.co/static/media/vim.2c5e9ce4.jpg",
-    backgroundColor: "#fdbbff",
+    backgroundColor: "#DCAE96",
+    addInfo: [
+      {
+        name: "Custom Website Design",
+        info: "Tailored to your brand and business needs.",
+      },
+      {
+        name: "E-commerce Solutions",
+        info: "Secure, scalable, and optimized for sales.",
+      },
+      {
+        name: "Responsive Design",
+        info: "Ensuring a seamless experience across all devices.",
+      },
+      {
+        name: "Content Management Systems",
+        info: "Easy to manage and update.",
+      },
+      {
+        name: "SEO Optimization",
+        info: "Boost your visibility and ranking on search engines.",
+      },
+      {
+        name: "Maintenance & Support",
+        info: "Keeping your site updated and running smoothly.",
+      },
+    ],
+    btnText: "Start Your Project",
   },
   {
-    name: "Web Development",
+    name: "App development",
     info: "Transform your online presence with our Web Development service. We craft sleek, user-friendly websites tailored to your brand. From design to deployment, we ensure your site stands out and delivers a seamless experience for your visitors.",
     image: "https://deveb.co/static/media/dopop2.3974e9e7.jpg",
-    backgroundColor: "#8d8bff",
+    backgroundColor: "#d4f3b7",
+    addInfo: [
+      {
+        name: "iOS and Android Development",
+        info: "Custom apps for all major platforms.",
+      },
+      {
+        name: "UI/UX Design",
+        info: "Beautiful and user-friendly interfaces.",
+      },
+      {
+        name: "Cross-Platform Development",
+        info: "Maximize your reach with apps that work on multiple devices.",
+      },
+      {
+        name: "App Testing & QA",
+        info: "Ensuring flawless performance.",
+      },
+      {
+        name: "Post-Launch Support",
+        info: "Continuous improvement and updates.",
+      },
+    ],
+    btnText: "Learn More About Our Apps",
   },
   {
-    name: "Social media marketing",
+    name: "Video editing",
     info: "TBoost your brand's online presence with our Social Media Marketing service. We craft tailored strategies to engage your audience and drive results. From content creation to analytics, we help you make a lasting impact in the digital sphere",
     image: "https://deveb.co/static/media/newdopegood.6e57b4b4.jpg",
-    backgroundColor: "#ff9292",
+    backgroundColor: "#DFC5FE",
+    addInfo: [
+      {
+        name: "Promotional Videos",
+        info: "Showcase your products and services.",
+      },
+      {
+        name: "Corporate Videos",
+        info: "Professional content for internal and external communications.",
+      },
+      {
+        name: "Social Media Content",
+        info: "Engaging videos for platforms like Instagram, Facebook, and YouTube.",
+      },
+      {
+        name: "Event Highlights",
+        info: "Capturing the best moments of your events.",
+      },
+      {
+        name: "Animation & Effects",
+        info: "Adding a creative touch to your videos.",
+      },
+    ],
+    btnText: "Transform Your Videos",
   },
   {
-    name: "Nft creation",
+    name: "Logo designing",
     info: "Dive into the world of digital assets with our NFT Creation service. We help you turn your ideas into unique, blockchain-based collectibles. From concept to minting, we guide you through the process, ensuring your NFTs stand out in the digital marketplace.",
     image: "https://deveb.co/static/media/vim.2c5e9ce4.jpg",
-    backgroundColor: "#baff9a",
+    backgroundColor: "#A0D9EF",
+    addInfo: [
+      {
+        name: "Custom Logo Design",
+        info: "Unique and tailored to your brand.",
+      },
+      {
+        name: "Brand Identity Development",
+        info: "Cohesive designs that tell your story.",
+      },
+      {
+        name: "Multiple Concepts & Revisions",
+        info: "Ensuring you get the perfect design.",
+      },
+      {
+        name: "High-Resolution Files",
+        info: "For all your branding needs.",
+      },
+    ],
+    btnText: "Get Your Custom Logo",
   },
   {
-    name: "Product shoot",
+    name: "Social media management",
     info: "Elevate your products with our expert Product Shoot service. From gadgets to gourmet, we capture it all with flair. Let our team showcase your offerings in the best light possible. Elevate your products with our expert Product Shoot service. From gadgets to gourmet, we capture it all with flair. Let our team showcase your offerings in the best light possible",
     image: "https://deveb.co/static/media/vim.2c5e9ce4.jpg",
-    backgroundColor: "#fdc0ff",
+    backgroundColor: "#FDFD96",
+    addInfo: [
+      {
+        name: "Content Creation",
+        info: "High-quality posts, stories, and videos.",
+      },
+      {
+        name: "Community Management",
+        info: "Engaging with your audience and building relationships.",
+      },
+      {
+        name: "Strategy Development",
+        info: "Tailored social media strategies for your brand.",
+      },
+      {
+        name: "Analytics & Reporting",
+        info: "Measuring success and optimizing performance.",
+      },
+    ],
+    btn: "Boost Your Social Media",
   },
   {
-    name: "Web Development",
+    name: "Professional shoots",
     info: "Transform your online presence with our Web Development service. We craft sleek, user-friendly websites tailored to your brand. From design to deployment, we ensure your site stands out and delivers a seamless experience for your visitors.",
     image: "https://deveb.co/static/media/dopop2.3974e9e7.jpg",
-    backgroundColor: "#feffaa",
+    backgroundColor: "#f4978e",
+    addInfo: [
+      {
+        name: "Studio Photography",
+        info: "Perfect lighting and settings for professional results.",
+      },
+      {
+        name: "Lifestyle Photography",
+        info: "Showcasing products in real-life scenarios.",
+      },
+      {
+        name: "High-Resolution Images",
+        info: "Ready for print and digital use.",
+      },
+      {
+        name: "Post-Processing",
+        info: "Enhancing images to perfection.",
+      },
+    ],
+    btnText: "Book Your Product Shoot",
   },
 ];
 
@@ -184,36 +341,36 @@ const Services = () => {
         scrub: true,
         animation: animation,
       });
+    });
 
-      contents.forEach((element, index) => {
-        ScrollTrigger.create({
-          trigger: element,
-          start: "top top",
-          end: "bottom bottom",
-          onEnter: () =>
+    contents.forEach((element, index) => {
+      ScrollTrigger.create({
+        trigger: element,
+        start: "top top",
+        end: "bottom bottom",
+        onEnter: () =>
+          gsap.to(body, {
+            backgroundColor: servicesData[index].backgroundColor,
+          }),
+
+        onLeave: () => {
+          if (index === contents.length - 1) {
             gsap.to(body, {
-              backgroundColor: servicesData[index].backgroundColor,
-            }),
-
-          onLeave: () => {
-            if (index === contents.length - 1) {
-              gsap.to(body, {
-                backgroundColor: "#fff",
-              });
-            }
-          },
-          onLeaveBack: () => {
-            if (index === 0) {
-              gsap.to(body, {
-                backgroundColor: "#fff",
-              });
-            } else {
-              gsap.to(body, {
-                backgroundColor: servicesData[index - 1].backgroundColor,
-              });
-            }
-          },
-        });
+              backgroundColor: "#fff",
+            });
+          }
+        },
+        onLeaveBack: () => {
+          if (index === 0) {
+            gsap.to(body, {
+              backgroundColor: "#fff",
+            });
+          } else {
+            gsap.to(body, {
+              backgroundColor: servicesData[index - 1].backgroundColor,
+            });
+          }
+        },
       });
     });
   });
@@ -226,7 +383,15 @@ const Services = () => {
             <img src={item.image} alt="" />
             <h1>{item.name}</h1>
             <p>{item.info}</p>
-            <Button>See More</Button>
+            <div className="more_info">
+              {item.addInfo.map((item, index) => (
+                <div className="info">
+                  <p className="service_add_info">• {item.name}:</p>
+                  <p>{item.info}</p>
+                </div>
+              ))}
+            </div>
+            <Button>{item.btnText}</Button>
           </Content>
         ))}
       </ContentWrapper>

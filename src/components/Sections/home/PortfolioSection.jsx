@@ -15,11 +15,10 @@ const Container = styled.div`
   padding-top: 10rem;
   @media (max-width: 1080px) {
     padding: 0 2rem;
-    padding-top: 6rem;
+    padding-top: 4rem;
   }
   @media (max-width: 768px) {
     padding: 0 1rem;
-    padding-top: 4rem;
   }
 `;
 
@@ -154,6 +153,9 @@ const Button = styled.div`
     color: #fff;
     padding: 0.8rem 1.3rem;
     border-radius: 2rem;
+  }
+  @media (max-width: 1080px) {
+    margin-top: 4rem;
   }
 `;
 
